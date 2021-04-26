@@ -1,0 +1,19 @@
+{
+  "name": "algoVisualizer",
+  "version": "1.0.0",
+  "description": "Simple Sorting and Pathfinding Visualizer",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RahulLanjewar93/AlgoVisualizer.git"
+  },
+  "author": "Aashka Doshi, Nidhish Mehra, Rahul Lanjewar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RahulLanjewar93/AlgoVisualizer/issues"
+  },
+  "homepage": "https://github.com/RahulLanjewar93/AlgoVisualizer#readme"
+}
