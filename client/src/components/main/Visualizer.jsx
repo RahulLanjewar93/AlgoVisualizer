@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-
+import { RunningContext } from '../../App';
+import styled from 'styled-components'
 
 const useStyles = makeStyles({
     box: {
@@ -13,23 +14,21 @@ const useStyles = makeStyles({
 
 const Visualizer = () => {
     const classes = useStyles();
-    const [randomArray, setRandomArray] = useState([])
-
-    const insertInArray = () => {
-        for (let i = 0; i < 20; i++) {
-            setRandomArray(prevArray => [...prevArray, Math.floor(Math.random() * 64)]);
-        };
-    }
-
-    useEffect(() => {
-        insertInArray();
-    }, [])
-
+    const runningContext = useContext(RunningContext)
     return (
         <div style={{ textAlign: 'center' }}>
-            {randomArray.map((element, index) => <div className={classes.box} style={{ backgroundColor: '#42cef5', height: element * 3, color: 'black', WebkitBoxAlign: 'end', }} key={index}>{element}</div>)}
+            {runningContext.randomArray.map((element, index) =>
+                <Bar className={classes.box} style={{ backgroundColor: '#42cef5', height: element * 5 + 1, color: 'black', WebkitBoxAlign: 'end', }} key={index} active={runningContext.currentElement === index} next={runningContext.nextElement === index}>
+                    {element}
+                </Bar>)
+            }
         </div>
     )
 }
+
+const Bar = styled.div`
+    background:${props => props.active ? 'red!important' : props.next ? 'blue!important' : '#42cef5'};
+    transition:background-color ease-in-out 0.5s
+`
 
 export default Visualizer

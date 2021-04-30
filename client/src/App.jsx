@@ -1,15 +1,51 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, createContext, useReducer } from 'react'
 import Main from './components/main/Main'
 import Navbar from './components/navbar/Navbar'
-import RunningContext from './components/RunningContext';
 
+export const RunningContext = createContext()
+
+const sleep = (miliseconds) => {
+  return new Promise(resolve => setTimeout(resolve, miliseconds))
+}
 function App() {
-  const [running, setRunning] = useState(false)
+
+  const [randomArray, setRandomArray] = useState([]);
+  const [currentElement, setCurrentElement] = useState(0);
+  const [nextElement, setNextElement] = useState(1);
+  const insertInArray = () => {
+    for (let i = 0; i < 5; i++) {
+      setRandomArray(prevArray => [...prevArray, Math.floor(Math.random() * 64)]);
+    };
+  }
+
+  useEffect(() => {
+    insertInArray();
+  }, [])
+
+  const bubbleSort = async () => {
+    let inputArray = randomArray
+    for (let i = 0; i < inputArray.length; i++) {
+      for (let j = 0; j < inputArray.length - 1 - i; j++) {
+        setCurrentElement(j)
+        setNextElement(j + 1)
+        await sleep(500)
+        if (inputArray[j] > inputArray[j + 1]) {
+          let temp = inputArray[j]
+          inputArray[j] = inputArray[j + 1]
+          inputArray[j + 1] = temp
+        }
+        setRandomArray([...inputArray])
+      }
+    }
+    setCurrentElement(null)
+    setNextElement(null)
+  }
+
   return (
-    <RunningContext.Provider value={{ running, setRunning }}>
+    <RunningContext.Provider value={{ randomArray: randomArray, bubbleSort: bubbleSort, currentElement, nextElement }}>
       <div className="App">
         <Navbar></Navbar>
-        <Main></Main>
+        <Main ></Main>
       </div>
     </RunningContext.Provider>
   );
