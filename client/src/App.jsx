@@ -13,7 +13,7 @@ function App() {
   const [currentElement, setCurrentElement] = useState(0);
   const [nextElement, setNextElement] = useState(1);
   const insertInArray = () => {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 30; i++) {
       setRandomArray(prevArray => [...prevArray, Math.floor(Math.random() * 64)]);
     };
   }
@@ -23,18 +23,34 @@ function App() {
   }, [])
 
   const bubbleSort = async () => {
-    let inputArray = randomArray
-    for (let i = 0; i < inputArray.length; i++) {
-      for (let j = 0; j < inputArray.length - 1 - i; j++) {
+    for (let i = 0; i < randomArray.length; i++) {
+      for (let j = 0; j < randomArray.length - 1 - i; j++) {
         setCurrentElement(j)
         setNextElement(j + 1)
-        await sleep(500)
-        if (inputArray[j] > inputArray[j + 1]) {
-          let temp = inputArray[j]
-          inputArray[j] = inputArray[j + 1]
-          inputArray[j + 1] = temp
+        await sleep(100)
+        if (randomArray[j] > randomArray[j + 1]) {
+          let temp = randomArray[j]
+          randomArray[j] = randomArray[j + 1]
+          randomArray[j + 1] = temp
         }
-        setRandomArray([...inputArray])
+      }
+    }
+    setCurrentElement(null)
+    setNextElement(null)
+  }
+
+  const selectionSort = async () => {
+    for (let i = 0; i < randomArray.length; i++) {
+      let min = i;
+      setCurrentElement(min)
+      for (let j = i + 1; j < randomArray.length; j++) {
+        setNextElement(j)
+        if (randomArray[j] < randomArray[min]) {
+          let temp = randomArray[min]
+          randomArray[min] = randomArray[j]
+          randomArray[j] = temp
+        }
+        await sleep(100)
       }
     }
     setCurrentElement(null)
@@ -42,7 +58,7 @@ function App() {
   }
 
   return (
-    <RunningContext.Provider value={{ randomArray: randomArray, bubbleSort: bubbleSort, currentElement, nextElement }}>
+    <RunningContext.Provider value={{ randomArray: randomArray, bubbleSort, selectionSort, currentElement, nextElement }}>
       <div className="App">
         <Navbar></Navbar>
         <Main ></Main>

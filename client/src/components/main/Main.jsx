@@ -26,7 +26,7 @@ const Main = () => {
 
         <div className={classes.root}>
             <Grid container direction="row" spacing={2} alignItems="center" justify="center">
-                <Grid item xs={3}>
+                <Grid item xs={12} lg={3}>
                     <Paper className={classes.paper} elevation={2}>
                         <Grid container direction="column" alignItems="center" justify="center">
                             <Grid item >
@@ -37,21 +37,7 @@ const Main = () => {
                                 </Button>
                             </Grid>
                             <Grid item >
-                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { runningContext.bubbleSort() }}>
-                                    <Typography variant='h6'>
-                                        Heap Sort
-                                    </Typography>
-                                </Button>
-                            </Grid>
-                            <Grid item >
-                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { runningContext.bubbleSort() }}>
-                                    <Typography variant='h6'>
-                                        Merge Sort
-                                    </Typography>
-                                </Button>
-                            </Grid>
-                            <Grid item >
-                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { runningContext.bubbleSort() }}>
+                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { runningContext.selectionSort() }}>
                                     <Typography variant='h6'>
                                         Selection Sort
                                     </Typography>
@@ -61,12 +47,12 @@ const Main = () => {
                         </Grid>
                     </Paper>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} lg={6}>
                     <Paper className={classes.paper} elevation={2}>
                         <Visualizer></Visualizer>
                     </Paper>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={12} lg={3}>
                     <Paper className={classes.paper} elevation={2}>
                         <Typography>Visitor Count</Typography>
                     </Paper>
