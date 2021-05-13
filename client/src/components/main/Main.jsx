@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { RunningContext } from '../../App';
+import { GlobalContext } from '../../App';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Main = () => {
-    const runningContext = useContext(RunningContext);
+    const globalContext = useContext(GlobalContext);
     const classes = useStyles();
 
     return (
@@ -30,14 +30,14 @@ const Main = () => {
                     <Paper className={classes.paper} elevation={2}>
                         <Grid container direction="column" alignItems="center" justify="center">
                             <Grid item >
-                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { runningContext.bubbleSort() }}>
+                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { globalContext.dispatch({ type: 'BUBBLE' }) }} disabled={globalContext.algoState}>
                                     <Typography variant='h6'>
                                         Bubble Sort
                                     </Typography>
                                 </Button>
                             </Grid>
                             <Grid item >
-                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { runningContext.selectionSort() }}>
+                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { globalContext.dispatch({ type: 'SELECTION' }) }} disabled={globalContext.algoState}>
                                     <Typography variant='h6'>
                                         Selection Sort
                                     </Typography>

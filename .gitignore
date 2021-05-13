@@ -3,8 +3,10 @@
 # dependencies
 /node_modules
 /client/node_modules
+/client/build
 /.pnp
 .pnp.js
+.netlify
 
 # testing
 /coverage
