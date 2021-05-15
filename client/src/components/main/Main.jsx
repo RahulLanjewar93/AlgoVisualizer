@@ -7,6 +7,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
 import Visualizer from './Visualizer';
+import Steps from '../tools/Steps';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -30,14 +32,14 @@ const Main = () => {
                     <Paper className={classes.paper} elevation={2}>
                         <Grid container direction="column" alignItems="center" justify="center">
                             <Grid item >
-                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { globalContext.dispatch({ type: 'BUBBLE' }) }} disabled={globalContext.algoState}>
+                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { globalContext.dispatch({ type: 'BUBBLE' }) }}>
                                     <Typography variant='h6'>
                                         Bubble Sort
                                     </Typography>
                                 </Button>
                             </Grid>
                             <Grid item >
-                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { globalContext.dispatch({ type: 'SELECTION' }) }} disabled={globalContext.algoState}>
+                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { globalContext.dispatch({ type: 'SELECTION' }) }}>
                                     <Typography variant='h6'>
                                         Selection Sort
                                     </Typography>
@@ -45,6 +47,27 @@ const Main = () => {
                             </Grid>
 
                         </Grid>
+
+                    </Paper>
+                    <Paper className={classes.paper} elevation={2} style={{ margin: '20px' }}>
+                        <Grid container direction="column" alignItems="center" justify="center">
+                            <Grid item >
+                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { globalContext.dispatch({ type: 'BUBBLE' }) }}>
+                                    <Typography variant='h6'>
+                                        Bubble Sort
+                                    </Typography>
+                                </Button>
+                            </Grid>
+                            <Grid item >
+                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { globalContext.dispatch({ type: 'SELECTION' }) }}>
+                                    <Typography variant='h6'>
+                                        Selection Sort
+                                    </Typography>
+                                </Button>
+                            </Grid>
+
+                        </Grid>
+
                     </Paper>
                 </Grid>
                 <Grid item xs={12} lg={6}>
@@ -54,7 +77,7 @@ const Main = () => {
                 </Grid>
                 <Grid item xs={12} lg={3}>
                     <Paper className={classes.paper} elevation={2}>
-                        <Typography>Visitor Count</Typography>
+                        <Steps></Steps>
                     </Paper>
                 </Grid>
             </Grid>

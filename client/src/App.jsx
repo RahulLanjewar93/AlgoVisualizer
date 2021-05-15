@@ -3,6 +3,7 @@ import Main from './components/main/Main'
 import Navbar from './components/navbar/Navbar'
 import bubbleSort from './sorting/bubbleSort'
 import selectionSort from './sorting/selectionSort'
+import steps from './utils/steps'
 
 export const GlobalContext = createContext()
 
@@ -11,6 +12,8 @@ function App() {
   const [randomArray, setRandomArray] = useState([]);
   const [currentElement, setCurrentElement] = useState(0);
   const [nextElement, setNextElement] = useState(1);
+  const [stepsArray, setStepsArray] = useState([])
+  const [currentStep, setCurrentStep] = useState([])
 
   const insertInArray = () => {
     for (let i = 0; i < 30; i++) {
@@ -26,10 +29,12 @@ function App() {
     switch (action.type) {
       case 'BUBBLE':
         algoState = true
-        await bubbleSort(randomArray, setCurrentElement, setNextElement)
+        setStepsArray(steps.bubblesort)
+        await bubbleSort(randomArray, setCurrentElement, setNextElement, setCurrentStep)
+        break
       case 'SELECTION':
         algoState = true
-        await selectionSort(randomArray, setCurrentElement, setNextElement)
+        await selectionSort(randomArray, setCurrentElement, setNextElement, setCurrentStep)
         break
     }
   }
@@ -41,7 +46,9 @@ function App() {
     currentElement,
     nextElement,
     dispatch,
-    algoState
+    algoState,
+    stepsArray,
+    currentStep
   }
 
   return (
