@@ -5,4 +5,5 @@ body {
 .current {
     color: rgb(245, 0, 87);
     font-weight: 600;
+    font-size: 1.4em;
 }

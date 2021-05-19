@@ -7,7 +7,9 @@ const useStyles = makeStyles({
         backgroundColor: 'grey'
     },
     steps: {
-        backgroundColor: 'red'
+        fontSize: '1.2em',
+        lineHeight: '1.5em',
+        margin: 0
     }
 })
 
@@ -20,15 +22,15 @@ const Steps = () => {
             <code className={classes.code}>
                 {globalContext.stepsArray.map((step, index) => {
                     return (
-                        <pre
-                            className={globalContext.currentStep.map((current) => (index == current ? 'current' : ''))}
-                            key={index}>
+                        <pre className={`${classes.steps} ${globalContext.currentStep.map((currentStep) => {
+                            return (currentStep == index ? `current` : ``)
+                        }).join('')}`} key={index}>
                             {step}
                         </pre>
                     )
                 })}
             </code>
-        </div>
+        </div >
     )
 }
 
