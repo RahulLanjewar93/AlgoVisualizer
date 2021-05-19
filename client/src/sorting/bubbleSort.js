@@ -1,22 +1,24 @@
 import sleep from '../utils/sleep'
 
-const bubbleSort = async (randomArray,setCurrentElement,setNextElement,setCurrentStep) => {
+const bubbleSort = async (randomArray,setRandomArray,setCurrentElement,setNextElement,setCurrentStep) => {
+  const newArray = randomArray
   setCurrentStep([0,6])
-  for (let i = 0; i < randomArray.length; i++) {
+  for (let i = 0; i < newArray.length; i++) {
     setCurrentStep([1,5])
     await sleep(500)
-    for (let j = 0; j < randomArray.length - 1 - i; j++) {
+    for (let j = 0; j < newArray.length - 1 - i; j++) {
       setCurrentElement(j)
       setNextElement(j + 1)
       setCurrentStep([2,4])
       await sleep(500)
-      if (randomArray[j+1] < randomArray[j]) {
+      if (newArray[j+1] < newArray[j]) {
         setCurrentStep([3])
         await sleep(500)
-        let temp = randomArray[j]
-        randomArray[j] = randomArray[j + 1];
-        randomArray[j + 1] = temp;
+        let temp = newArray[j]
+        newArray[j] = newArray[j + 1];
+        newArray[j + 1] = temp;
       }
+      setRandomArray([...newArray])
     }
   }
   setCurrentElement(null)

@@ -30,12 +30,12 @@ function App() {
       case 'BUBBLE':
         algoState = true
         setStepsArray(steps.bubblesort)
-        await bubbleSort(randomArray, setCurrentElement, setNextElement, setCurrentStep)
+        await bubbleSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep)
         break
       case 'SELECTION':
         algoState = true
         setStepsArray(steps.selectionsort)
-        await selectionSort(randomArray, setCurrentElement, setNextElement, setCurrentStep)
+        await selectionSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep)
         break
     }
   }

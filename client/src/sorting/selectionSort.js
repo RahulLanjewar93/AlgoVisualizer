@@ -1,6 +1,7 @@
 import sleep from '../utils/sleep'
 
-const selectionSort = async (randomArray,setCurrentElement,setNextElement,setCurrentStep) => {
+const selectionSort = async (randomArray,setRandomArray,setCurrentElement,setNextElement,setCurrentStep) => {
+  const newArray = randomArray
   setCurrentStep([0,6])
   for (let i = 0; i < randomArray.length; i++) {
     setCurrentStep([1,5])
@@ -17,6 +18,7 @@ const selectionSort = async (randomArray,setCurrentElement,setNextElement,setCur
         randomArray[i] = randomArray[j]
         randomArray[j] = temp
       }
+      setRandomArray([...newArray])
     }
   }
   setCurrentElement(null)
