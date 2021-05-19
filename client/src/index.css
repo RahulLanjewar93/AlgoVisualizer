@@ -4,6 +4,5 @@ body {
 
 .current {
     color: rgb(245, 0, 87);
-    border: 1px solid rgb(245, 0, 87);
     font-weight: 600;
 }

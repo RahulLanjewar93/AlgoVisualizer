@@ -12,7 +12,7 @@ function App() {
   const [randomArray, setRandomArray] = useState([]);
   const [currentElement, setCurrentElement] = useState(0);
   const [nextElement, setNextElement] = useState(1);
-  const [stepsArray, setStepsArray] = useState([])
+  const [stepsArray, setStepsArray] = useState(["Please Select Algorithm"])
   const [currentStep, setCurrentStep] = useState([])
 
   const insertInArray = () => {

@@ -7,7 +7,7 @@ const useStyles = makeStyles({
         backgroundColor: 'grey'
     },
     steps: {
-
+        backgroundColor: 'red'
     }
 })
 
@@ -20,9 +20,9 @@ const Steps = () => {
             <code className={classes.code}>
                 {globalContext.stepsArray.map((step, index) => {
                     return (
-                        <pre className={globalContext.currentStep.map((currentStep) => {
-                            return (`${currentStep == index ? `current ${classes.steps}` : classes.steps}`)
-                        })} key={index}>
+                        <pre
+                            className={globalContext.currentStep.map((current) => (index == current ? 'current' : ''))}
+                            key={index}>
                             {step}
                         </pre>
                     )
