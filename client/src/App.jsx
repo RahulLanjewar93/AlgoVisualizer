@@ -34,6 +34,7 @@ function App() {
         break
       case 'SELECTION':
         algoState = true
+        setStepsArray(steps.selectionsort)
         await selectionSort(randomArray, setCurrentElement, setNextElement, setCurrentStep)
         break
     }

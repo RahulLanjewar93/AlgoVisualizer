@@ -20,10 +20,8 @@ const Steps = () => {
             <code className={classes.code}>
                 {globalContext.stepsArray.map((step, index) => {
                     return (
-                        <pre className={globalContext.currentStep != null && globalContext.currentStep.map((currentStep) => {
-                            return (`
-                            ${currentStep == index ? 'current classes.steps' : 'classes.steps'}
-                            `)
+                        <pre className={globalContext.currentStep.map((currentStep) => {
+                            return (`${currentStep == index ? `current` : classes.steps}`)
                         })} key={index}>
                             {step}
                         </pre>

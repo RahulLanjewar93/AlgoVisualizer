@@ -10,7 +10,7 @@ const bubbleSort = async (randomArray,setCurrentElement,setNextElement,setCurren
       setNextElement(j + 1)
       setCurrentStep([2,4])
       await sleep(500)
-      if (randomArray[j] > randomArray[j + 1]) {
+      if (randomArray[j+1] < randomArray[j]) {
         setCurrentStep([3])
         await sleep(500)
         let temp = randomArray[j]
@@ -21,6 +21,6 @@ const bubbleSort = async (randomArray,setCurrentElement,setNextElement,setCurren
   }
   setCurrentElement(null)
   setNextElement(null)
-  setCurrentStep(null)
+  setCurrentStep([])
 }
 export default bubbleSort
