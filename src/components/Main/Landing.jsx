@@ -1,18 +1,20 @@
-import { Grid, Typography, makeStyles, Button, Box } from '@material-ui/core'
+import { Grid, Typography, makeStyles, Button, Box, Divider } from '@material-ui/core'
 // import BannerImage from '../../assets/images/homebackground.jpg'
 import React from 'react'
 
+const primaryColor = '#faf6f2'
+const secondaryColor = '#232323'
 const useStyles = makeStyles({
     banner: {
         minHeight: '100vh',
         display: 'flex',
     },
     bannerInfo: {
-        backgroundColor: '#faf6f2'
+        backgroundColor: primaryColor
     },
     bannerHero: {
         // backgroundImage: `url('${BannerImage}'),linear-gradient(to right,rgba(245, 246, 252, 0.52), rgba(0, 0, 0, 1))`,
-        backgroundColor: `#232323`,
+        backgroundColor: secondaryColor,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: 'cover'
@@ -35,7 +37,15 @@ const useStyles = makeStyles({
         color: 'white'
     },
     button: {
-        textTransform: 'capitalize'
+        textTransform: 'capitalize',
+        backgroundColor: secondaryColor,
+        color: 'white',
+        '&:hover': {
+            color: secondaryColor,
+            border: 'none',
+            backgroundColor: 'white',
+            transition: '0.2s ease-in-out'
+        }
     },
     text: {
         margin: '20px 0px'
@@ -51,8 +61,9 @@ const Landing = () => {
                     <Typography variant='h2' className={classes.text}>
                         Algo Visualizer
                     </Typography>
-                    <Typography variant='h4' className={classes.text}>
-                        <em>Your best mate to solve your algorithms</em>
+                    <Divider></Divider>
+                    <Typography variant='body1' className={classes.text}>
+                        <em>Ever wondered what a algorithm looks like?  <br></br>Scroll  below and expand your imagination</em>
                     </Typography>
                     <Button className={classes.button} variant='outlined' >
                         Get Started
@@ -62,7 +73,8 @@ const Landing = () => {
             <Grid className={classes.bannerHero} item xs={12} sm={4}>
                 <Box className={classes.containerRight} >
                     <Typography variant='h4'>
-                        <cite className={classes.cite}>"A picture is worth of thousands words"</cite>
+                        <cite className={classes.cite}>"An algorithm must be seen to be believed." <br></br><br></br> -Donald Ervin Knuth</cite>
+
                     </Typography>
                 </Box>
             </Grid>
