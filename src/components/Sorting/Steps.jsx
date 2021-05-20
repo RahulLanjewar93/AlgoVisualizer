@@ -23,7 +23,7 @@ const Steps = () => {
                 {globalContext.stepsArray.map((step, index) => {
                     return (
                         <pre className={`${classes.steps} ${globalContext.currentStep.map((currentStep) => {
-                            return (currentStep == index ? `current` : ``)
+                            return (currentStep === index ? `current` : ``)
                         }).join('')}`} key={index}>
                             {step}
                         </pre>

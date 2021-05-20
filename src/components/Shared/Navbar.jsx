@@ -26,8 +26,11 @@ const Navbar = () => {
         <div className={classes.root}>
             <AppBar style={{ backgroundColor: '#232323', color: 'white' }} position="fixed">
                 <Toolbar>
+                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <MenuIcon />
+                    </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        AlgoViusalizer
+                        Algo Visualizer
                     </Typography>
                     <Button color="inherit">Sorting</Button>
                 </Toolbar>

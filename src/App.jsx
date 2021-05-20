@@ -5,7 +5,6 @@ import Navbar from './components/Shared/Navbar'
 import bubbleSort from './alogrithms/sorting/bubbleSort'
 import selectionSort from './alogrithms/sorting/selectionSort'
 import steps from './utils/steps'
-import { createMuiTheme } from '@material-ui/core'
 
 export const GlobalContext = createContext()
 
@@ -38,6 +37,8 @@ function App() {
         algoState = true
         setStepsArray(steps.selectionsort)
         await selectionSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep)
+        break
+      default:
         break
     }
   }

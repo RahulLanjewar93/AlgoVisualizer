@@ -1,5 +1,5 @@
 import { Grid, Typography, makeStyles } from '@material-ui/core'
-import BannerImage from '../../assets/images/homebackground.jpg'
+// import BannerImage from '../../assets/images/homebackground.jpg'
 import React from 'react'
 
 const useStyles = makeStyles({
@@ -24,10 +24,10 @@ const Landing = () => {
     return (
         <div>
             <Grid className={classes.banner} container>
-                <Grid className={classes.bannerInfo} item md={8}>
-
+                <Grid className={classes.bannerInfo} item xs={12} sm={8}>
+                    <Typography>Algo Visualizer</Typography>
                 </Grid>
-                <Grid className={classes.bannerHero} item md={4}>
+                <Grid className={classes.bannerHero} item xs={12} sm={4}>
                     <Typography>Hi</Typography>
                 </Grid>
             </Grid>
