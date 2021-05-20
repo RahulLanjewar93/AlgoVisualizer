@@ -1,9 +1,11 @@
 import React, { useState, useEffect, createContext, useReducer } from 'react'
-import Main from './components/Sorting/Main'
+import SortingLayout from './components/Sorting/Layout'
+import Landing from './components/Main/Landing'
 import Navbar from './components/Shared/Navbar'
 import bubbleSort from './alogrithms/sorting/bubbleSort'
 import selectionSort from './alogrithms/sorting/selectionSort'
 import steps from './utils/steps'
+import { createMuiTheme } from '@material-ui/core'
 
 export const GlobalContext = createContext()
 
@@ -53,12 +55,15 @@ function App() {
   }
 
   return (
-    <GlobalContext.Provider value={contexts}>
-      <div className="App">
-        <Navbar></Navbar>
-        <Main ></Main>
-      </div>
-    </GlobalContext.Provider>
+    <>
+      <Navbar></Navbar>
+      <Landing></Landing>
+      <GlobalContext.Provider value={contexts}>
+        <div className="App">
+          <SortingLayout ></SortingLayout>
+        </div>
+      </GlobalContext.Provider>
+    </>
   );
 }
 

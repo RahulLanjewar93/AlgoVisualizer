@@ -24,11 +24,8 @@ const Navbar = () => {
 
     return (
         <div className={classes.root}>
-            <AppBar style={{ backgroundColor: '#f50057', }} position="static">
+            <AppBar style={{ backgroundColor: '#232323', color: 'white' }} position="fixed">
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon />
-                    </IconButton>
                     <Typography variant="h6" className={classes.title}>
                         AlgoViusalizer
                     </Typography>

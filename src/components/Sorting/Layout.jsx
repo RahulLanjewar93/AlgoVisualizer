@@ -7,7 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
 import Visualizer from './Visualizer';
-import Steps from '../Tools/Steps';
+import Steps from './Steps';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Main = () => {
+const Layout = () => {
     const globalContext = useContext(GlobalContext);
     const classes = useStyles();
 
@@ -85,4 +85,4 @@ const Main = () => {
     );
 }
 
-export default Main
+export default Layout
