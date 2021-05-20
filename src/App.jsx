@@ -1,8 +1,8 @@
 import React, { useState, useEffect, createContext, useReducer } from 'react'
-import Main from './components/main/Main'
-import Navbar from './components/navbar/Navbar'
-import bubbleSort from './sorting/bubbleSort'
-import selectionSort from './sorting/selectionSort'
+import Main from './components/Sorting/Main'
+import Navbar from './components/Shared/Navbar'
+import bubbleSort from './alogrithms/sorting/bubbleSort'
+import selectionSort from './alogrithms/sorting/selectionSort'
 import steps from './utils/steps'
 
 export const GlobalContext = createContext()

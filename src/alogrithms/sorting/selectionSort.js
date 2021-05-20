@@ -1,4 +1,4 @@
-import sleep from '../utils/sleep'
+import sleep from '../../utils/sleep'
 
 const selectionSort = async (randomArray,setRandomArray,setCurrentElement,setNextElement,setCurrentStep) => {
   const newArray = randomArray
