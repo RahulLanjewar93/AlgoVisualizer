@@ -1,6 +1,8 @@
 import { Grid, Typography, makeStyles, Button, Box, Divider } from '@material-ui/core'
 // import BannerImage from '../../assets/images/homebackground.jpg'
 import React from 'react'
+import Particles from 'react-particles-js'
+import particlesConfig from '../../config/particles'
 
 const primaryColor = '#faf6f2'
 const secondaryColor = '#232323'
@@ -17,7 +19,8 @@ const useStyles = makeStyles({
         backgroundColor: secondaryColor,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        position: 'relative'
     },
     containerLeft: {
         position: 'relative',
@@ -49,6 +52,15 @@ const useStyles = makeStyles({
     },
     text: {
         margin: '20px 0px'
+    },
+    particles: {
+        position: 'absolute',
+        zIndex: '0',
+        width: '100%',
+        '& canvas': {
+            minHeight: '100vh',
+        },
+        overflow: 'hidden'
     }
 })
 
@@ -71,9 +83,12 @@ const Landing = () => {
                 </Box>
             </Grid>
             <Grid className={classes.bannerHero} item xs={12} sm={4}>
+                <Particles className={classes.particles} params={particlesConfig}>
+                </Particles>
                 <Box className={classes.containerRight} >
                     <Typography variant='h4'>
                         <cite className={classes.cite}>"An algorithm must be seen to be believed." <br></br><br></br> -Donald Ervin Knuth</cite>
+
 
                     </Typography>
                 </Box>
