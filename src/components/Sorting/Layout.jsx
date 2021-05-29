@@ -49,26 +49,6 @@ const Layout = () => {
                         </Grid>
 
                     </Paper>
-                    <Paper className={classes.paper} elevation={2} style={{ margin: '20px' }}>
-                        <Grid container direction="column" alignItems="center" justify="center">
-                            <Grid item >
-                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { globalContext.dispatch({ type: 'BUBBLE' }) }}>
-                                    <Typography variant='h6'>
-                                        Bubble Sort
-                                    </Typography>
-                                </Button>
-                            </Grid>
-                            <Grid item >
-                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { globalContext.dispatch({ type: 'SELECTION' }) }}>
-                                    <Typography variant='h6'>
-                                        Selection Sort
-                                    </Typography>
-                                </Button>
-                            </Grid>
-
-                        </Grid>
-
-                    </Paper>
                 </Grid>
                 <Grid item xs={12} lg={6}>
                     <Paper className={classes.paper} elevation={2}>

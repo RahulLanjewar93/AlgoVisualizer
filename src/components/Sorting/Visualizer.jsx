@@ -16,7 +16,7 @@ const Visualizer = () => {
     const classes = useStyles();
     const globalContext = useContext(GlobalContext)
     return (
-        <>
+        <div>
             <div style={{ textAlign: 'center' }}>
                 {globalContext.randomArray.map((element, index) =>
                     <Bar className={classes.box}
@@ -37,7 +37,7 @@ const Visualizer = () => {
                     }
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

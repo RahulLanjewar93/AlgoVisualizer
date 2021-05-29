@@ -56,7 +56,7 @@ function App() {
   }
 
   return (
-    <>
+    <div>
       <Navbar></Navbar>
       <Landing></Landing>
       <GlobalContext.Provider value={contexts}>
@@ -64,7 +64,7 @@ function App() {
           <SortingLayout ></SortingLayout>
         </div>
       </GlobalContext.Provider>
-    </>
+    </div>
   );
 }
 
