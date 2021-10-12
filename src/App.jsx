@@ -63,7 +63,6 @@ function App() {
       <GlobalContext.Provider value={contexts}>
         <SortingLayout ></SortingLayout>
       </GlobalContext.Provider>
-
     </div>
   );
 }
