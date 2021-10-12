@@ -16,28 +16,30 @@ const Visualizer = () => {
     const classes = useStyles();
     const globalContext = useContext(GlobalContext)
     return (
-        <>
-            <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center' }}>
+            {globalContext.randomArray.map((element, index) =>
+                <Bar
+                    className={classes.box}
+                    style={{ backgroundColor: '#42cef5', width: `${70 / globalContext.randomArray.length}%`, height: element * 5 + 1, color: 'black' }}
+                    key={index}
+                    active={globalContext.currentElement === index}
+                    next={globalContext.nextElement === index}>
+                </Bar>
+            )
+            }
+            <div style={{ display: 'inline-block', width: '100%', textAlign: 'center' }}>
                 {globalContext.randomArray.map((element, index) =>
-                    <Bar className={classes.box}
-                        style={{ backgroundColor: '#42cef5', width: `${70 / globalContext.randomArray.length}%`, height: element * 5 + 1, color: 'black' }} key={index}
-                        active={globalContext.currentElement === index}
-                        next={globalContext.nextElement === index}>
-                    </Bar>
+                    <Typography
+                        vairant='p'
+                        className={classes.box}
+                        style={{ width: `${70 / globalContext.randomArray.length}%`, color: 'black' }}
+                        key={index}>
+                        {element}
+                    </Typography>
                 )
                 }
-                <div style={{ display: 'inline-block', width: '100%', textAlign: 'center' }}>
-                    {globalContext.randomArray.map((element, index) =>
-                        <Typography vairant='p' className={classes.box}
-                            style={{ width: `${70 / globalContext.randomArray.length}%`, color: 'black' }} key={index}
-                        >
-                            {element}
-                        </Typography>
-                    )
-                    }
-                </div>
             </div>
-        </>
+        </div>
     )
 }
 

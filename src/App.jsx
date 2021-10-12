@@ -2,8 +2,8 @@ import React, { useState, useEffect, createContext, useReducer } from 'react'
 import SortingLayout from './components/Sorting/Layout'
 import Landing from './components/Main/Landing'
 import Navbar from './components/Shared/Navbar'
-import bubbleSort from './alogrithms/sorting/bubbleSort'
-import selectionSort from './alogrithms/sorting/selectionSort'
+import bubbleSort from './utils//alogrithms/sorting/bubbleSort'
+import selectionSort from './utils//alogrithms/sorting/selectionSort'
 import steps from './utils/steps'
 
 export const GlobalContext = createContext()
@@ -17,7 +17,7 @@ function App() {
   const [currentStep, setCurrentStep] = useState([])
 
   const insertInArray = () => {
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 20; i++) {
       setRandomArray(prevArray => [...prevArray, Math.floor(Math.random() * 64)]);
     };
   }
@@ -27,16 +27,17 @@ function App() {
   }, [])
 
   const algoReducer = async (algoState, action) => {
+    const speed = 10
     switch (action.type) {
       case 'BUBBLE':
         algoState = true
         setStepsArray(steps.bubblesort)
-        await bubbleSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep)
+        await bubbleSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed)
         break
       case 'SELECTION':
         algoState = true
         setStepsArray(steps.selectionsort)
-        await selectionSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep)
+        await selectionSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed)
         break
       default:
         break
@@ -56,15 +57,14 @@ function App() {
   }
 
   return (
-    <>
+    <div className="App">
       <Navbar></Navbar>
       <Landing></Landing>
       <GlobalContext.Provider value={contexts}>
-        <div className="App">
-          <SortingLayout ></SortingLayout>
-        </div>
+        <SortingLayout ></SortingLayout>
       </GlobalContext.Provider>
-    </>
+
+    </div>
   );
 }
 

@@ -8,8 +8,14 @@ const useStyles = makeStyles({
     },
     steps: {
         fontSize: '1.2em',
-        lineHeight: '1.5em',
-        margin: 0
+        lineHeight: '2em',
+        margin: 0,
+        padding: "0px 10px"
+    },
+    current: {
+        color: "rgb(245, 0, 87)",
+        fontWeight: 600,
+        outline: "1px solid rgb(245,0,87)"
     }
 })
 
@@ -23,7 +29,7 @@ const Steps = () => {
                 {globalContext.stepsArray.map((step, index) => {
                     return (
                         <pre className={`${classes.steps} ${globalContext.currentStep.map((currentStep) => {
-                            return (currentStep === index ? `current` : ``)
+                            return (currentStep === index ? classes.current : ``)
                         }).join('')}`} key={index}>
                             {step}
                         </pre>

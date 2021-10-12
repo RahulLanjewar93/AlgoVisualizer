@@ -3,6 +3,7 @@ import { Grid, Typography, makeStyles, Button, Box, Divider } from '@material-ui
 import React from 'react'
 import Particles from 'react-particles-js'
 import particlesConfig from '../../config/particles'
+import Selection from './Selection'
 
 const primaryColor = '#faf6f2'
 const secondaryColor = '#232323'
@@ -20,7 +21,8 @@ const useStyles = makeStyles({
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
-        position: 'relative'
+        position: 'relative',
+        overflow: "hidden"
     },
     containerLeft: {
         position: 'relative',
@@ -67,33 +69,34 @@ const useStyles = makeStyles({
 const Landing = () => {
     const classes = useStyles()
     return (
-        <Grid className={classes.banner} container>
-            <Grid className={classes.bannerInfo} item xs={12} sm={8}>
-                <Box className={classes.containerLeft} >
-                    <Typography variant='h2' className={classes.text}>
-                        Algo Visualizer
-                    </Typography>
-                    <Divider></Divider>
-                    <Typography variant='body1' className={classes.text}>
-                        <em>Ever wondered what a algorithm looks like?  <br></br>Scroll  below and expand your imagination</em>
-                    </Typography>
-                    <Button className={classes.button} variant='outlined' >
-                        Get Started
-                    </Button>
-                </Box>
+        <>
+            <Grid className={classes.banner} container>
+                <Grid className={classes.bannerInfo} item xs={12} sm={8}>
+                    <Box className={classes.containerLeft} >
+                        <Typography variant='h2' className={classes.text}>
+                            Algo Visualizer
+                        </Typography>
+                        <Divider></Divider>
+                        <Typography variant='body1' className={classes.text}>
+                            <em>Ever wondered what a algorithm looks like?  <br></br>Scroll  below and expand your imagination</em>
+                        </Typography>
+                        <Button className={classes.button} variant='outlined' >
+                            Get Started
+                        </Button>
+                    </Box>
+                </Grid>
+                <Grid className={classes.bannerHero} item xs={12} sm={4} >
+                    <Particles className={classes.particles} params={particlesConfig}>
+                    </Particles>
+                    <Box className={classes.containerRight} >
+                        <Typography variant='h4'>
+                            <cite className={classes.cite}>"An algorithm must be seen to be believed." <br></br><br></br> -Donald Ervin Knuth</cite>
+                        </Typography>
+                    </Box>
+                </Grid>
             </Grid>
-            <Grid className={classes.bannerHero} item xs={12} sm={4}>
-                <Particles className={classes.particles} params={particlesConfig}>
-                </Particles>
-                <Box className={classes.containerRight} >
-                    <Typography variant='h4'>
-                        <cite className={classes.cite}>"An algorithm must be seen to be believed." <br></br><br></br> -Donald Ervin Knuth</cite>
-
-
-                    </Typography>
-                </Box>
-            </Grid>
-        </Grid>
+            <Selection></Selection>
+        </>
     )
 }
 

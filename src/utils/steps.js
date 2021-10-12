@@ -1,21 +1,21 @@
 const steps = {
     'bubblesort':[
-        "for(i=0;i<arr.length<i++) {",
-        "   for(j=0;j<arr.length-i;j++) {",
-        "       if(arr[j+1] < arr[j]) {",
-        "           swap(arr[j],arr[j+1])",
-        "       }",
-        "   }",
-        "}"
+        "0  for(i=0;i<arr.length<i++) {",
+        "1      for(j=0;j<arr.length-i;j++) {",
+        "2          if(arr[j+1] < arr[j]) {",
+        "3              swap(arr[j+1],arr[j])",
+        "4          }",
+        "5      }",
+        "6  }"
     ],
     'selectionsort':[
-        "for(i=0;i<arr.length<i++) {",
-        "   for(j=0;j<arr.length-i;j++) {",
-        "       if(arr[i] > arr[j]) {",
-        "           swap(arr[i],arr[j])",
-        "       }",
-        "   }",
-        "}"
+        "0  for(i=0;i<arr.length<i++) {",
+        "1      for(j=0;j<arr.length-i;j++) {",
+        "2          if(arr[i] > arr[j]) {",
+        "3              swap(arr[i],arr[j])",
+        "4          }",
+        "4      }",
+        "6  }"
     ],
 }
 
