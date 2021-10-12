@@ -69,7 +69,7 @@ const useStyles = makeStyles({
 const Landing = () => {
     const classes = useStyles()
     return (
-        <>
+        <Box>
             <Grid className={classes.banner} container>
                 <Grid className={classes.bannerInfo} item xs={12} sm={8}>
                     <Box className={classes.containerLeft} >
@@ -96,7 +96,7 @@ const Landing = () => {
                 </Grid>
             </Grid>
             <Selection></Selection>
-        </>
+        </Box>
     )
 }
 
