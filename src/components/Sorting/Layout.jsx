@@ -32,7 +32,7 @@ const Layout = () => {
                     <Paper className={classes.paper} elevation={2}>
                         <Grid container direction="column" alignItems="center" justify="center">
                             <Grid item >
-                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { globalContext.dispatch({ type: 'BUBBLE' }) }}>
+                                <Button style={{ textTransform: 'capitalize'}} onClick={() => { globalContext.dispatch({ type: 'BUBBLE' }) }}>
                                     <Typography variant='h6'>
                                         Bubble Sort
                                     </Typography>

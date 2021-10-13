@@ -95,7 +95,7 @@ const Landing = () => {
                     </Box>
                 </Grid>
             </Grid>
-            <Selection></Selection>
+            {/* <Selection></Selection> */}
         </Box>
     )
 }

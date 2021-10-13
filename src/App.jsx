@@ -1,5 +1,7 @@
 import React, { useState, useEffect, createContext, useReducer } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import SortingLayout from './components/Sorting/Layout'
+import SearchingLayout from './components/Searching/Layout'
 import Landing from './components/Main/Landing'
 import Navbar from './components/Shared/Navbar'
 import bubbleSort from './utils//alogrithms/sorting/bubbleSort'
@@ -58,10 +60,15 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar></Navbar>
-      <Landing></Landing>
       <GlobalContext.Provider value={contexts}>
-        <SortingLayout ></SortingLayout>
+        <Router>
+          <Navbar></Navbar>
+          <Switch>
+            <Route exact path='/' component={Landing} />
+            <Route path='/Sorting' component={SortingLayout} />
+            <Route path='/Searching' component={SearchingLayout} />
+          </Switch>
+        </Router>
       </GlobalContext.Provider>
     </div>
   );
