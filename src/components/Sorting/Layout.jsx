@@ -1,11 +1,8 @@
 import React from 'react';
 import { useContext } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import { GlobalContext } from '../../App';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button'
+import {Grid, Paper, Typography, Button} from '@mui/material';
 import Visualizer from './Visualizer';
 import Steps from './Steps';
 
@@ -13,9 +10,10 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         margin: 20,
+        marginTop: '10rem',
     },
     paper: {
-        padding: theme.spacing(2),
+        padding: '1rem',
         margin: 'auto',
     },
 }));
@@ -32,7 +30,7 @@ const Layout = () => {
                     <Paper className={classes.paper} elevation={2}>
                         <Grid container direction="column" alignItems="center" justify="center">
                             <Grid item >
-                                <Button style={{ textTransform: 'capitalize'}} onClick={() => { globalContext.dispatch({ type: 'BUBBLE' }) }}>
+                                <Button style={{ textTransform: 'capitalize' }} onClick={() => { globalContext.dispatch({ type: 'BUBBLE' }) }}>
                                     <Typography variant='h6'>
                                         Bubble Sort
                                     </Typography>

@@ -1,29 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import { makeStyles } from '@mui/styles';
+import {AppBar, Toolbar, Typography, Button} from '@mui/material';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     root: {
         flexGrow: 1,
     },
     menuButton: {
-        marginRight: theme.spacing(2),
+        marginRight: '1rem',
     },
     title: {
         flexGrow: 1,
     },
     menuLinks: {
-        marginLeft: theme.spacing(2),
+        marginLeft: '1rem',
         textDecoration: 'none',
         color: 'white'
     }
-}));
+});
 
 const Navbar = () => {
     const classes = useStyles();
