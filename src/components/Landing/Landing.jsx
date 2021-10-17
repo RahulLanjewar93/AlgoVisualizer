@@ -1,10 +1,10 @@
 import { Grid, Typography, Button, Box, Divider } from '@mui/material'
-import {makeStyles} from '@mui/styles'
+import { makeStyles } from '@mui/styles'
 // import BannerImage from '../../assets/images/homebackground.jpg'
 import React from 'react'
 import Particles from 'react-particles-js'
 import particlesConfig from '../../config/particles'
-import Selection from './Selection'
+import Toolbar from './Toolbar/Toolbar'
 
 const primaryColor = '#faf6f2'
 const secondaryColor = '#232323'
@@ -62,7 +62,7 @@ const useStyles = makeStyles({
 const Landing = () => {
     const classes = useStyles()
     return (
-        <Box>
+        <Box className={classes.bannerInfo}>
             <Grid className={classes.banner} container>
                 <Grid className={classes.bannerInfo} item xs={12} sm={8}>
                     <Box className={classes.containerLeft} >
@@ -73,7 +73,7 @@ const Landing = () => {
                         <Typography variant='body1' className={classes.text}>
                             <em>Ever wondered what a algorithm looks like?  <br></br>Scroll  below and expand your imagination</em>
                         </Typography>
-                        <Button className={classes.startButton} color="inherit" variant='outlined' >
+                        <Button variant='contained' color="secondary" sx={{ backgroundColor: "#232323", color: "#fff" }}>
                             Get Started
                         </Button>
                     </Box>
@@ -88,7 +88,8 @@ const Landing = () => {
                     </Box>
                 </Grid>
             </Grid>
-            {/* <Selection></Selection> */}
+            <Divider variant="fullWidth" style={{ height: "5px", backgroundColor: "#232323" }} />
+            <Toolbar />
         </Box>
     )
 }

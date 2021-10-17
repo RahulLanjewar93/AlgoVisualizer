@@ -2,7 +2,7 @@ import React from 'react';
 import { useContext } from 'react'
 import { makeStyles } from '@mui/styles';
 import { GlobalContext } from '../../App';
-import {Grid, Paper, Typography, Button} from '@mui/material';
+import { Grid, Paper, Typography, Button } from '@mui/material';
 import Visualizer from './Visualizer';
 import Steps from './Steps';
 
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Layout = () => {
+const Sorting = () => {
     const globalContext = useContext(GlobalContext);
     const classes = useStyles();
 
@@ -63,4 +63,4 @@ const Layout = () => {
     );
 }
 
-export default Layout
+export default Sorting

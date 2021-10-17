@@ -1,12 +1,15 @@
 import React, { useState, useEffect, createContext, useReducer } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import SortingLayout from './components/Sorting/Layout'
-import SearchingLayout from './components/Searching/Layout'
-import Landing from './components/Main/Landing'
+import Sorting from './components/Sorting/Sorting'
+import Searching from './components/Searching/Searching'
+import Landing from './components/Landing/Landing'
 import Navbar from './components/Shared/Navbar'
 import bubbleSort from './utils//alogrithms/sorting/bubbleSort'
 import selectionSort from './utils//alogrithms/sorting/selectionSort'
 import steps from './utils/steps'
+import { Box, createMuiTheme, MuiThemeProvider } from '@material-ui/core'
+import { createTheme } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/private-theming'
 
 export const GlobalContext = createContext()
 
@@ -18,6 +21,30 @@ function App() {
   const [stepsArray, setStepsArray] = useState(["Please Select Algorithm"])
   const [currentStep, setCurrentStep] = useState([])
 
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#FAF6F2",
+        light: "#FAF6F2",
+        dark: "#FAF6F2",
+        contrastText: "#232323",
+      },
+      secondary: {
+        main: "#232323",
+        light: "#232323",
+        dark: "#232323",
+        contrastText: "#FAF6F2",
+        background: "#232323"
+      },
+    },
+    typography: {
+      fontFamily: "Raleway,Great Vibes",
+      fontWeightLight: 400,
+      fontWeightMedium: 500,
+      fontWeightRegular: 600,
+      fontWeightBold: 700
+    }
+  })
   const insertInArray = () => {
     for (let i = 0; i < 20; i++) {
       setRandomArray(prevArray => [...prevArray, Math.floor(Math.random() * 64)]);
@@ -60,16 +87,18 @@ function App() {
 
   return (
     <div className="App">
-      <GlobalContext.Provider value={contexts}>
-        <Router>
-          <Navbar></Navbar>
-          <Switch>
-            <Route exact path='/' component={Landing} />
-            <Route path='/Sorting' component={SortingLayout} />
-            <Route path='/Searching' component={SearchingLayout} />
-          </Switch>
-        </Router>
-      </GlobalContext.Provider>
+      <ThemeProvider theme={theme} >
+        <GlobalContext.Provider value={contexts}>
+          <Router>
+            <Navbar></Navbar>
+            <Switch>
+              <Route exact path='/' component={Landing} />
+              <Route path='/Sorting' component={Sorting} />
+              <Route path='/Searching' component={Searching} />
+            </Switch>
+          </Router>
+        </GlobalContext.Provider>
+      </ThemeProvider>
     </div>
   );
 }

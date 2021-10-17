@@ -20,7 +20,7 @@ const useStyles = makeStyles({
             },
         },
     },
-    optionContainer:{
+    optionContainer: {
         display: 'flex',
         justifyContent: 'space-between',
         marginTop: "5rem",
@@ -41,7 +41,7 @@ const useStyles = makeStyles({
     }
 });
 
-export default function Layout() {
+export default function Searching() {
     const globalContext = useContext(GlobalContext);
     const [alignment, setAlignment] = React.useState('linearsearch');
     const handleChange = (event, newAlignment) => {

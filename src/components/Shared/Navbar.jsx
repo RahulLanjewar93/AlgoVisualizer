@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
-import {AppBar, Toolbar, Typography, Button} from '@mui/material';
+import { AppBar, Toolbar, Typography, Button } from '@mui/material';
+import { Box } from '@mui/system';
 
 const useStyles = makeStyles({
     root: {
@@ -24,14 +25,14 @@ const Navbar = () => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
+        <Box className={classes.root}>
             <AppBar style={{ backgroundColor: '#232323', color: 'white' }} position="fixed">
                 <Toolbar>
-                    {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon />
-                    </IconButton> */}
                     <Typography variant="h6" className={classes.title}>
-                        Algo Visualizer
+                        <Link to="/" className={classes.menuLinks}>
+                            <Button color="inherit">Algo Visualizer</Button>
+
+                        </Link>
                     </Typography>
                     <Link to="/Sorting" className={classes.menuLinks}>
                         <Button color="inherit">Sorting</Button>
@@ -42,7 +43,7 @@ const Navbar = () => {
                     <Button color="inherit">Path Finding</Button>
                 </Toolbar>
             </AppBar>
-        </div>
+        </Box>
     )
 }
 
