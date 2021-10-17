@@ -68,7 +68,7 @@ export default function Layout() {
             </div>
             <Grid container spacing={2}>
                 <Grid item md={8} sm={12}>
-                    <Visualizer />
+                    <Visualizer/>
                 </Grid>
                 <Grid item md={4} sm={12}>
                     <Steps />
