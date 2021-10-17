@@ -73,7 +73,7 @@ const Landing = () => {
                         <Typography variant='body1' className={classes.text}>
                             <em>Ever wondered what a algorithm looks like?  <br></br>Scroll  below and expand your imagination</em>
                         </Typography>
-                        <Button variant='contained' color="secondary" sx={{ backgroundColor: "#232323", color: "#fff" }}>
+                        <Button variant='contained' color="secondary">
                             Get Started
                         </Button>
                     </Box>

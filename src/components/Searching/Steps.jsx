@@ -24,7 +24,7 @@ const Steps = () => {
     const globalContext = useContext(GlobalContext)
     const classes = useStyles()
     return (
-        <div>
+        <div style={{ marginTop: '3rem' }}>
             <code className={classes.code}>
                 {globalContext.stepsArray.map((step, index) => {
                     return (

@@ -2,7 +2,7 @@ import React from 'react';
 import { useContext } from 'react'
 import { makeStyles } from '@mui/styles';
 import { GlobalContext } from '../../App';
-import { Typography, TextField, Grid } from '@mui/material';
+import { Typography, TextField, Grid, Button } from '@mui/material';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import Visualizer from './Visualizer';
 import Steps from './Steps';
@@ -14,11 +14,6 @@ const useStyles = makeStyles({
     root: {
         flexGrow: 1,
         margin: 20,
-        '& .MuiOutlinedInput-root': {
-            '&.Mui-focused fieldset': {
-                borderColor: '#232323',
-            },
-        },
     },
     optionContainer: {
         display: 'flex',
@@ -37,17 +32,22 @@ const useStyles = makeStyles({
         padding: 0,
         marginLeft: '1rem',
         width: '100%',
-        outline: '#232323 !important',
     }
 });
 
 export default function Searching() {
     const globalContext = useContext(GlobalContext);
     const [alignment, setAlignment] = React.useState('linearsearch');
+
     const handleChange = (event, newAlignment) => {
         setAlignment(newAlignment);
     };
     const classes = useStyles();
+
+    const handleClick = (e) => {
+        alignment === 'linearsearch' ? globalContext.dispatch({ type: 'LINEARSEARCH' }) : globalContext.dispatch({ type: 'BINARYSEARCH' });
+    }
+
     return (
         <div className={classes.root}>
             <div className={classes.optionContainer}>
@@ -63,17 +63,29 @@ export default function Searching() {
                 </span>
                 <span style={{ display: 'inline-flex' }}>
                     <Typography>Enter custom array (Separate each number with a comma): </Typography>
-                    <TextField id="outlined-basic" variant="outlined" className={classes.arrayInput} size="small" />
+                    <TextField id="outlined-basic" variant="outlined" className={classes.arrayInput} size="small" color="secondary" />
                 </span>
             </div>
-            <Grid container spacing={2}>
-                <Grid item md={8} sm={12}>
-                    <Visualizer/>
+            <Grid container direction="column" justify="center" alignItems="center" sx={{ width: '100%' }}>
+                <Grid item xs={10}>
+                    <Grid container spacing={2} sx={{ width: '90vw' }}>
+                        <Grid item md={8} sm={12}>
+                            <Visualizer />
+                        </Grid>
+                        <Grid item md={4} sm={12}>
+                            <Steps />
+                        </Grid>
+                    </Grid>
                 </Grid>
-                <Grid item md={4} sm={12}>
-                    <Steps />
+                <Grid item xs={2} sx={{ display: 'flex', mt: '2rem', justifyContent: 'center' }}>
+                    <Typography sx={{ mt: '0.2rem' }}>
+                        Enter the number you want to search for:
+                    </Typography>
+                    <TextField id="outlined-basic" type="number" variant="outlined" size="small" sx={{ width: '4rem', ml: '1rem' }} />
+                    <Button variant="contained" color="secondary" sx={{ ml: '1rem' }} onClick={(e) => { handleClick(e) }}>Start</Button>
                 </Grid>
             </Grid>
+
         </div >
     )
 }

@@ -7,9 +7,7 @@ import Navbar from './components/Shared/Navbar'
 import bubbleSort from './utils//alogrithms/sorting/bubbleSort'
 import selectionSort from './utils//alogrithms/sorting/selectionSort'
 import steps from './utils/steps'
-import { Box, createMuiTheme, MuiThemeProvider } from '@material-ui/core'
-import { createTheme } from '@mui/material/styles'
-import { ThemeProvider } from '@mui/private-theming'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 export const GlobalContext = createContext()
 

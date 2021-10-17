@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 })
 
 const Bar = styled.div`
-    background:${props => props.active ? '#ff5e00!important' : props.next ? '#69d9ff!important' : '#42cef5'};
+    background:${props => props.active ? '#ff5e00!important' : '#42cef5'};
 `
 
 export default function Visualizer() {
