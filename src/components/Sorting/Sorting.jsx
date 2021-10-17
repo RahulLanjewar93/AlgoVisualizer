@@ -22,6 +22,18 @@ const Sorting = () => {
     const globalContext = useContext(GlobalContext);
     const classes = useStyles();
 
+    const insertInArray = () => {
+        for (let i = 0; i < 20; i++) {
+            globalContext.setRandomArray(prevArray => [...prevArray, Math.floor(Math.random() * 64)]);
+        };
+    }
+
+    React.useEffect(() => {
+        globalContext.setRandomArray([]);
+        insertInArray();
+        return () => { globalContext.algoState = false }
+    }, [])
+
     return (
 
         <div className={classes.root}>

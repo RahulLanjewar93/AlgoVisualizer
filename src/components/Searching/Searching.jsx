@@ -38,15 +38,48 @@ const useStyles = makeStyles({
 export default function Searching() {
     const globalContext = useContext(GlobalContext);
     const [alignment, setAlignment] = React.useState('linearsearch');
+    const classes = useStyles();
 
     const handleChange = (event, newAlignment) => {
         setAlignment(newAlignment);
     };
-    const classes = useStyles();
 
     const handleClick = (e) => {
         alignment === 'linearsearch' ? globalContext.dispatch({ type: 'LINEARSEARCH' }) : globalContext.dispatch({ type: 'BINARYSEARCH' });
     }
+
+    const handleNumberChange = (e) => {
+        globalContext.setTarget(e.target.value);
+    }
+
+    React.useEffect(() => {
+        globalContext.dispatch({ type: 'STOP' });
+    }, [])
+
+    const insertInArray = () => {
+        for (let i = 0; i < 20; i++) {
+            globalContext.setRandomArray(prevArray => [...prevArray, Math.floor(Math.random() * 64)]);
+        };
+    }
+
+    React.useEffect(() => {
+        globalContext.setRandomArray([]);
+        insertInArray();
+        return () => { globalContext.setRandomArray([]); }
+    }, []);
+
+    React.useEffect(() => {
+        console.log(globalContext.index);
+        if (globalContext.index == -1) {
+            document.getElementById('search-result').innerHTML = 'Not Found';
+            document.getElementById('search-result').style.color = 'red';
+        } else if (globalContext.index == null) {
+            document.getElementById('search-result').innerHTML = '';
+        } else {
+            document.getElementById('search-result').innerHTML = 'Found at index: ' + globalContext.index;
+            document.getElementById('search-result').style.color = 'green';
+        }
+    }, [globalContext.index]);
 
     return (
         <div className={classes.root}>
@@ -81,11 +114,11 @@ export default function Searching() {
                     <Typography sx={{ mt: '0.2rem' }}>
                         Enter the number you want to search for:
                     </Typography>
-                    <TextField id="outlined-basic" type="number" variant="outlined" size="small" sx={{ width: '4rem', ml: '1rem' }} />
+                    <TextField defaultValue={globalContext.target} onChange={(e) => { handleNumberChange(e) }} id="outlined-basic" type="number" variant="outlined" size="small" sx={{ width: '4rem', ml: '1rem' }} />
                     <Button variant="contained" color="secondary" sx={{ ml: '1rem' }} onClick={(e) => { handleClick(e) }}>Start</Button>
+                    <Typography id="search-result" sx={{color: '#232323', textAlign: 'center', marginTop: '0.2rem', marginLeft: '1rem' }}></Typography>
                 </Grid>
             </Grid>
-
         </div >
     )
 }

@@ -6,6 +6,7 @@ import Landing from './components/Landing/Landing'
 import Navbar from './components/Shared/Navbar'
 import bubbleSort from './utils//alogrithms/sorting/bubbleSort'
 import selectionSort from './utils//alogrithms/sorting/selectionSort'
+import linearSearch from './utils//alogrithms/searching/linearSearch'
 import steps from './utils/steps'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -18,6 +19,8 @@ function App() {
   const [nextElement, setNextElement] = useState(1);
   const [stepsArray, setStepsArray] = useState(["Please Select Algorithm"])
   const [currentStep, setCurrentStep] = useState([])
+  const [target, setTarget] = useState(null)
+  const [index, setIndex] = useState(null)
 
   const theme = createTheme({
     palette: {
@@ -43,15 +46,6 @@ function App() {
       fontWeightBold: 700
     }
   })
-  const insertInArray = () => {
-    for (let i = 0; i < 20; i++) {
-      setRandomArray(prevArray => [...prevArray, Math.floor(Math.random() * 64)]);
-    };
-  }
-
-  useEffect(() => {
-    insertInArray();
-  }, [])
 
   const algoReducer = async (algoState, action) => {
     const speed = 10
@@ -66,6 +60,15 @@ function App() {
         setStepsArray(steps.selectionsort)
         await selectionSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed)
         break
+      case 'LINEARSEARCH':
+        algoState = true
+        setStepsArray(steps.linearsearch)
+        setIndex(await linearSearch(randomArray,index, setIndex, setCurrentElement, setCurrentStep, speed, target))
+        break
+      case 'BINARYSEARCH':
+        algoState = true
+        setStepsArray(steps.binarysearch)
+        break
       default:
         break
     }
@@ -75,12 +78,21 @@ function App() {
 
   const contexts = {
     randomArray,
+    setRandomArray,
     currentElement,
+    setCurrentElement,
     nextElement,
+    setNextElement,
     dispatch,
     algoState,
     stepsArray,
-    currentStep
+    setStepsArray,
+    currentStep,
+    setCurrentStep,
+    target,
+    setTarget,
+    index,
+    setIndex
   }
 
   return (
