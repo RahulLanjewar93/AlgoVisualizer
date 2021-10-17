@@ -1,24 +1,25 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import { Box, Container } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { makeStyles } from '@mui/styles';
+import { AppBar, Toolbar, Typography, Button } from '@mui/material';
+import { Box } from '@mui/system';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     root: {
         flexGrow: 1,
     },
     menuButton: {
-        marginRight: theme.spacing(2),
+        marginRight: '1rem',
     },
     title: {
         flexGrow: 1,
     },
-}));
+    menuLinks: {
+        marginLeft: '1rem',
+        textDecoration: 'none',
+        color: 'white'
+    }
+});
 
 const Navbar = () => {
     const classes = useStyles();
@@ -28,11 +29,18 @@ const Navbar = () => {
             <AppBar style={{ backgroundColor: '#232323', color: 'white' }} position="fixed">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
-                        Algo Visualizer
+                        <Link to="/" className={classes.menuLinks}>
+                            <Button color="inherit">Algo Visualizer</Button>
+
+                        </Link>
                     </Typography>
-                    <Button color="inherit">Searching</Button>
-                    <Button color="inherit">Sorting</Button>
-                    <Button color="inherit">Pathfinding</Button>
+                    <Link to="/Sorting" className={classes.menuLinks}>
+                        <Button color="inherit">Sorting</Button>
+                    </Link>
+                    <Link to="/Searching" className={classes.menuLinks}>
+                        <Button color="inherit">Searching</Button>
+                    </Link>
+                    <Button color="inherit">Path Finding</Button>
                 </Toolbar>
             </AppBar>
         </Box>

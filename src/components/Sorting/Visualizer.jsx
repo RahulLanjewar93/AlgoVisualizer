@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import { GlobalContext } from '../../App';
 import styled from 'styled-components'
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 
 const useStyles = makeStyles({
     box: {

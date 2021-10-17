@@ -1,4 +1,5 @@
-import { Grid, Typography, makeStyles, Button, Box, Divider } from '@material-ui/core'
+import { Grid, Typography, Button, Box, Divider } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 // import BannerImage from '../../assets/images/homebackground.jpg'
 import React from 'react'
 import Particles from 'react-particles-js'
@@ -41,16 +42,8 @@ const useStyles = makeStyles({
     cite: {
         color: 'white'
     },
-    button: {
+    startButton: {
         textTransform: 'capitalize',
-        backgroundColor: secondaryColor,
-        color: 'white',
-        '&:hover': {
-            color: secondaryColor,
-            border: 'none',
-            backgroundColor: 'white',
-            transition: '0.2s ease-in-out'
-        }
     },
     text: {
         margin: '20px 0px'
@@ -80,7 +73,7 @@ const Landing = () => {
                         <Typography variant='body1' className={classes.text}>
                             <em>Ever wondered what a algorithm looks like?  <br></br>Scroll  below and expand your imagination</em>
                         </Typography>
-                        <Button variant='contained' color="secondary" >
+                        <Button variant='contained' color="secondary" sx={{ backgroundColor: "#232323", color: "#fff" }}>
                             Get Started
                         </Button>
                     </Box>

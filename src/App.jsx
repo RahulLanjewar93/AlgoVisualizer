@@ -1,11 +1,15 @@
 import React, { useState, useEffect, createContext, useReducer } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Sorting from './components/Sorting/Sorting'
+import Searching from './components/Searching/Searching'
 import Landing from './components/Landing/Landing'
 import Navbar from './components/Shared/Navbar'
 import bubbleSort from './utils//alogrithms/sorting/bubbleSort'
 import selectionSort from './utils//alogrithms/sorting/selectionSort'
 import steps from './utils/steps'
-import { Box, createMuiTheme, ThemeProvider } from '@material-ui/core'
+import { Box, createMuiTheme, MuiThemeProvider } from '@material-ui/core'
+import { createTheme } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/private-theming'
 
 export const GlobalContext = createContext()
 
@@ -17,7 +21,7 @@ function App() {
   const [stepsArray, setStepsArray] = useState(["Please Select Algorithm"])
   const [currentStep, setCurrentStep] = useState([])
 
-  const theme = createMuiTheme({
+  const theme = createTheme({
     palette: {
       primary: {
         main: "#FAF6F2",
@@ -82,15 +86,20 @@ function App() {
   }
 
   return (
-    <Box className="App">
-      <ThemeProvider theme={theme}>
-        <Navbar></Navbar>
-        <Landing></Landing>
+    <div className="App">
+      <ThemeProvider theme={theme} >
         <GlobalContext.Provider value={contexts}>
-          <Sorting ></Sorting>
+          <Router>
+            <Navbar></Navbar>
+            <Switch>
+              <Route exact path='/' component={Landing} />
+              <Route path='/Sorting' component={Sorting} />
+              <Route path='/Searching' component={Searching} />
+            </Switch>
+          </Router>
         </GlobalContext.Provider>
       </ThemeProvider>
-    </Box>
+    </div>
   );
 }
 
