@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { Box, Container } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,19 +24,18 @@ const Navbar = () => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
+        <Box className={classes.root}>
             <AppBar style={{ backgroundColor: '#232323', color: 'white' }} position="fixed">
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon />
-                    </IconButton>
                     <Typography variant="h6" className={classes.title}>
                         Algo Visualizer
                     </Typography>
+                    <Button color="inherit">Searching</Button>
                     <Button color="inherit">Sorting</Button>
+                    <Button color="inherit">Pathfinding</Button>
                 </Toolbar>
             </AppBar>
-        </div>
+        </Box>
     )
 }
 

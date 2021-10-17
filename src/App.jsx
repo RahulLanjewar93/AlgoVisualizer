@@ -1,10 +1,11 @@
 import React, { useState, useEffect, createContext, useReducer } from 'react'
-import SortingLayout from './components/Sorting/Layout'
-import Landing from './components/Main/Landing'
+import Sorting from './components/Sorting/Sorting'
+import Landing from './components/Landing/Landing'
 import Navbar from './components/Shared/Navbar'
 import bubbleSort from './utils//alogrithms/sorting/bubbleSort'
 import selectionSort from './utils//alogrithms/sorting/selectionSort'
 import steps from './utils/steps'
+import { Box, createMuiTheme, ThemeProvider } from '@material-ui/core'
 
 export const GlobalContext = createContext()
 
@@ -16,6 +17,30 @@ function App() {
   const [stepsArray, setStepsArray] = useState(["Please Select Algorithm"])
   const [currentStep, setCurrentStep] = useState([])
 
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: "#FAF6F2",
+        light: "#FAF6F2",
+        dark: "#FAF6F2",
+        contrastText: "#232323",
+      },
+      secondary: {
+        main: "#232323",
+        light: "#232323",
+        dark: "#232323",
+        contrastText: "#FAF6F2",
+        background: "#232323"
+      },
+    },
+    typography: {
+      fontFamily: "Raleway,Great Vibes",
+      fontWeightLight: 400,
+      fontWeightMedium: 500,
+      fontWeightRegular: 600,
+      fontWeightBold: 700
+    }
+  })
   const insertInArray = () => {
     for (let i = 0; i < 20; i++) {
       setRandomArray(prevArray => [...prevArray, Math.floor(Math.random() * 64)]);
@@ -57,13 +82,15 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Navbar></Navbar>
-      <Landing></Landing>
-      <GlobalContext.Provider value={contexts}>
-        <SortingLayout ></SortingLayout>
-      </GlobalContext.Provider>
-    </div>
+    <Box className="App">
+      <ThemeProvider theme={theme}>
+        <Navbar></Navbar>
+        <Landing></Landing>
+        <GlobalContext.Provider value={contexts}>
+          <Sorting ></Sorting>
+        </GlobalContext.Provider>
+      </ThemeProvider>
+    </Box>
   );
 }
 

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Layout = () => {
+const Sorting = () => {
     const globalContext = useContext(GlobalContext);
     const classes = useStyles();
 
@@ -65,4 +65,4 @@ const Layout = () => {
     );
 }
 
-export default Layout
+export default Sorting
