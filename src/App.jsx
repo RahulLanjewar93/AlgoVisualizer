@@ -22,27 +22,6 @@ function App() {
   const [target, setTarget] = useState(null)
   const [index, setIndex] = useState(null)
 
-  const algoReducer = async (algoState, action) => {
-    const speed = 0
-    switch (action.type) {
-      case 'BUBBLE':
-        algoState = true
-        setStepsArray(steps.bubblesort)
-        await bubbleSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed, algoState)
-        break
-      case 'SELECTION':
-        algoState = true
-        setStepsArray(steps.selectionsort)
-        await selectionSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed, algoState)
-        break
-      default:
-        break
-    }
-    return algoState
-  }
-
-  const [algoState, dispatch] = useReducer(algoReducer, false)
-
   useEffect(() => {
     insertInArray();
   }, [])
@@ -81,9 +60,8 @@ function App() {
     },
   })
 
-
   const algoReducer = async (algoState, action) => {
-    const speed = 10
+    const speed = 100
     switch (action.type) {
       case 'BUBBLE':
         algoState = true
@@ -98,7 +76,7 @@ function App() {
       case 'LINEARSEARCH':
         algoState = true
         setStepsArray(steps.linearsearch)
-        setIndex(await linearSearch(randomArray,index, setIndex, setCurrentElement, setCurrentStep, speed, target))
+        setIndex(await linearSearch(randomArray, index, setIndex, setCurrentElement, setCurrentStep, speed, target))
         break
       case 'BINARYSEARCH':
         algoState = true
@@ -108,8 +86,8 @@ function App() {
         break
     }
   }
-
   const [algoState, dispatch] = useReducer(algoReducer, false)
+
 
   const contexts = {
     randomArray,
