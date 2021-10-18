@@ -6,6 +6,7 @@ import Landing from './components/Landing/Landing'
 import Navbar from './components/Shared/Navbar'
 import bubbleSort from './utils//alogrithms/sorting/bubbleSort'
 import selectionSort from './utils//alogrithms/sorting/selectionSort'
+import linearSearch from './utils//alogrithms/searching/linearSearch'
 import steps from './utils/steps'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -18,6 +19,8 @@ function App() {
   const [nextElement, setNextElement] = useState(1);
   const [stepsArray, setStepsArray] = useState(["Please Select Algorithm"])
   const [currentStep, setCurrentStep] = useState([])
+  const [target, setTarget] = useState(null)
+  const [index, setIndex] = useState(null)
 
   const algoReducer = async (algoState, action) => {
     const speed = 0
@@ -78,14 +81,54 @@ function App() {
     },
   })
 
+
+  const algoReducer = async (algoState, action) => {
+    const speed = 10
+    switch (action.type) {
+      case 'BUBBLE':
+        algoState = true
+        setStepsArray(steps.bubblesort)
+        await bubbleSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed)
+        break
+      case 'SELECTION':
+        algoState = true
+        setStepsArray(steps.selectionsort)
+        await selectionSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed)
+        break
+      case 'LINEARSEARCH':
+        algoState = true
+        setStepsArray(steps.linearsearch)
+        setIndex(await linearSearch(randomArray,index, setIndex, setCurrentElement, setCurrentStep, speed, target))
+        break
+      case 'BINARYSEARCH':
+        algoState = true
+        setStepsArray(steps.binarysearch)
+        break
+      default:
+        break
+    }
+  }
+
+  const [algoState, dispatch] = useReducer(algoReducer, false)
+
   const contexts = {
-    randomArray, setRandomArray,
-    currentElement, setCurrentElement,
-    nextElement, setNextElement,
-    stepsArray, setStepsArray,
-    currentStep, setCurrentStep,
+    randomArray,
+    setRandomArray,
+    currentElement,
+    setCurrentElement,
+    nextElement,
+    setNextElement,
     dispatch,
     algoState,
+    stepsArray,
+    setStepsArray,
+    currentStep,
+    setCurrentStep,
+    target,
+    setTarget,
+    index,
+    setIndex
+
   }
 
   return (

@@ -15,6 +15,7 @@ const useStyles = makeStyles({
 const Visualizer = () => {
     const classes = useStyles();
     const globalContext = useContext(GlobalContext)
+
     return (
         <div style={{ textAlign: 'center' }}>
             {globalContext.randomArray.map((element, index) =>
