@@ -19,6 +19,37 @@ function App() {
   const [stepsArray, setStepsArray] = useState(["Please Select Algorithm"])
   const [currentStep, setCurrentStep] = useState([])
 
+  const algoReducer = async (algoState, action) => {
+    const speed = 0
+    switch (action.type) {
+      case 'BUBBLE':
+        algoState = true
+        setStepsArray(steps.bubblesort)
+        await bubbleSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed, algoState)
+        break
+      case 'SELECTION':
+        algoState = true
+        setStepsArray(steps.selectionsort)
+        await selectionSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed, algoState)
+        break
+      default:
+        break
+    }
+    return algoState
+  }
+
+  const [algoState, dispatch] = useReducer(algoReducer, false)
+
+  useEffect(() => {
+    insertInArray();
+  }, [])
+
+  const insertInArray = () => {
+    for (let i = 0; i < 20; i++) {
+      setRandomArray(prevArray => [...prevArray, Math.floor(Math.random() * 64)]);
+    };
+  }
+
   const theme = createTheme({
     palette: {
       primary: {
@@ -40,47 +71,21 @@ function App() {
       fontWeightLight: 400,
       fontWeightMedium: 500,
       fontWeightRegular: 600,
-      fontWeightBold: 700
-    }
+      fontWeightBold: 700,
+      button: {
+        textTransform: "capitalize"
+      }
+    },
   })
-  const insertInArray = () => {
-    for (let i = 0; i < 20; i++) {
-      setRandomArray(prevArray => [...prevArray, Math.floor(Math.random() * 64)]);
-    };
-  }
-
-  useEffect(() => {
-    insertInArray();
-  }, [])
-
-  const algoReducer = async (algoState, action) => {
-    const speed = 10
-    switch (action.type) {
-      case 'BUBBLE':
-        algoState = true
-        setStepsArray(steps.bubblesort)
-        await bubbleSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed)
-        break
-      case 'SELECTION':
-        algoState = true
-        setStepsArray(steps.selectionsort)
-        await selectionSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed)
-        break
-      default:
-        break
-    }
-  }
-
-  const [algoState, dispatch] = useReducer(algoReducer, false)
 
   const contexts = {
-    randomArray,
-    currentElement,
-    nextElement,
+    randomArray, setRandomArray,
+    currentElement, setCurrentElement,
+    nextElement, setNextElement,
+    stepsArray, setStepsArray,
+    currentStep, setCurrentStep,
     dispatch,
     algoState,
-    stepsArray,
-    currentStep
   }
 
   return (
