@@ -22,6 +22,37 @@ function App() {
   const [target, setTarget] = useState(null)
   const [index, setIndex] = useState(null)
 
+  const algoReducer = async (algoState, action) => {
+    const speed = 0
+    switch (action.type) {
+      case 'BUBBLE':
+        algoState = true
+        setStepsArray(steps.bubblesort)
+        await bubbleSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed, algoState)
+        break
+      case 'SELECTION':
+        algoState = true
+        setStepsArray(steps.selectionsort)
+        await selectionSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed, algoState)
+        break
+      default:
+        break
+    }
+    return algoState
+  }
+
+  const [algoState, dispatch] = useReducer(algoReducer, false)
+
+  useEffect(() => {
+    insertInArray();
+  }, [])
+
+  const insertInArray = () => {
+    for (let i = 0; i < 20; i++) {
+      setRandomArray(prevArray => [...prevArray, Math.floor(Math.random() * 64)]);
+    };
+  }
+
   const theme = createTheme({
     palette: {
       primary: {
@@ -43,9 +74,13 @@ function App() {
       fontWeightLight: 400,
       fontWeightMedium: 500,
       fontWeightRegular: 600,
-      fontWeightBold: 700
-    }
+      fontWeightBold: 700,
+      button: {
+        textTransform: "capitalize"
+      }
+    },
   })
+
 
   const algoReducer = async (algoState, action) => {
     const speed = 10
@@ -93,6 +128,7 @@ function App() {
     setTarget,
     index,
     setIndex
+
   }
 
   return (

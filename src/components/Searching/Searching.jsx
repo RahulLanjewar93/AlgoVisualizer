@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useContext } from 'react'
 import { makeStyles } from '@mui/styles';
 import { GlobalContext } from '../../App';
@@ -39,6 +39,17 @@ export default function Searching() {
     const globalContext = useContext(GlobalContext);
     const [alignment, setAlignment] = React.useState('linearsearch');
     const classes = useStyles();
+
+    useEffect(() => {
+        if (globalContext.algoState) {
+            console.log("Algo was running so reset")
+            globalContext.setRandomArray([])
+            globalContext.setCurrentElement(0)
+            globalContext.setNextElement(1)
+            globalContext.setStepsArray(["Please Select Algorithm"])
+            globalContext.setCurrentStep([])
+        }
+    }, [])
 
     const handleChange = (event, newAlignment) => {
         setAlignment(newAlignment);

@@ -41,16 +41,16 @@ const Sorting = () => {
                 <Grid item xs={12} lg={3}>
                     <Paper className={classes.paper} elevation={2}>
                         <Grid container direction="column" alignItems="center" justify="center">
-                            <Grid item >
-                                <Button style={{ textTransform: 'capitalize' }} onClick={() => { globalContext.dispatch({ type: 'BUBBLE' }) }}>
+                            <Grid item xs={12} width="100%" padding="10px 0px">
+                                <Button color="secondary" variant="contained" fullWidth onClick={() => { globalContext.dispatch({ type: 'BUBBLE' }) }}>
                                     <Typography variant='h6'>
                                         Bubble Sort
                                     </Typography>
                                 </Button>
                             </Grid>
-                            <Grid item >
-                                <Button style={{ textTransform: 'capitalize', }} onClick={() => { globalContext.dispatch({ type: 'SELECTION' }) }}>
-                                    <Typography variant='h6'>
+                            <Grid item xs={12} width="100%" padding="10px 0px">
+                                <Button color="secondary" variant="contained" fullWidth onClick={() => { globalContext.dispatch({ type: 'SELECTION' }) }}>
+                                    <Typography variant='h6' >
                                         Selection Sort
                                     </Typography>
                                 </Button>
