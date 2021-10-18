@@ -7,6 +7,7 @@ import Navbar from './components/Shared/Navbar'
 import bubbleSort from './utils//alogrithms/sorting/bubbleSort'
 import selectionSort from './utils//alogrithms/sorting/selectionSort'
 import linearSearch from './utils//alogrithms/searching/linearSearch'
+import binarySearch from './utils//alogrithms/searching/binarySearch'
 import steps from './utils/steps'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -23,6 +24,7 @@ function App() {
   const [index, setIndex] = useState(null)
 
   useEffect(() => {
+    setRandomArray([])
     insertInArray();
   }, [])
 
@@ -81,6 +83,7 @@ function App() {
       case 'BINARYSEARCH':
         algoState = true
         setStepsArray(steps.binarysearch)
+        setIndex(await binarySearch(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed, index, setIndex, target))
         break
       default:
         break
