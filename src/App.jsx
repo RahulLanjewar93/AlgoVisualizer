@@ -24,14 +24,15 @@ function App() {
   const [index, setIndex] = useState(null)
 
   useEffect(() => {
-    setRandomArray([])
     insertInArray();
   }, [])
 
   const insertInArray = () => {
+    const newArray = []
     for (let i = 0; i < 20; i++) {
-      setRandomArray(prevArray => [...prevArray, Math.floor(Math.random() * 64)]);
+      newArray.push(Math.floor(Math.random() * 64));
     };
+    setRandomArray(newArray)
   }
 
   const theme = createTheme({
@@ -119,9 +120,9 @@ function App() {
           <Router>
             <Navbar></Navbar>
             <Switch>
-              <Route exact path='/' component={Landing} />
               <Route path='/Sorting' component={Sorting} />
               <Route path='/Searching' component={Searching} />
+              <Route exact path='/' component={Landing} />
             </Switch>
           </Router>
         </GlobalContext.Provider>

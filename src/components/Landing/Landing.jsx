@@ -69,10 +69,14 @@ const Landing = () => {
                         <Typography variant='h2' className={classes.text}>
                             Algo Visualizer
                         </Typography>
-                        <Divider></Divider>
-                        <Typography variant='body1' className={classes.text}>
-                            <em>Ever wondered what a algorithm looks like?  <br></br>Scroll  below and expand your imagination</em>
-                        </Typography>
+                        <Divider />
+                        <Box padding="20px 0">
+                            <Typography variant='body1' className={classes.text}>
+                                <em>Ever wondered what a algorithm looks like?  </em>
+                                <br></br>
+                                <em>Scroll  below and expand your imagination</em>
+                            </Typography>
+                        </Box>
                         <Button variant='contained' color="secondary">
                             Get Started
                         </Button>
