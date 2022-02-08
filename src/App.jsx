@@ -2,6 +2,7 @@ import React, { useState, useEffect, createContext, useReducer } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Sorting from './components/Sorting/Sorting'
 import Searching from './components/Searching/Searching'
+import Pathfinding from './components/Pathfinding/Pathfinding'
 import Landing from './components/Landing/Landing'
 import Navbar from './components/Shared/Navbar'
 import bubbleSort from './utils//alogrithms/sorting/bubbleSort'
@@ -122,6 +123,7 @@ function App() {
             <Switch>
               <Route path='/Sorting' component={Sorting} />
               <Route path='/Searching' component={Searching} />
+              <Route path='/Pathfinding' component={Pathfinding} />
               <Route exact path='/' component={Landing} />
             </Switch>
           </Router>

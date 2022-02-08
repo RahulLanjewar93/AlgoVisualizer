@@ -40,7 +40,9 @@ const Navbar = () => {
                     <Link to="/Searching" className={classes.menuLinks}>
                         <Button color="inherit">Searching</Button>
                     </Link>
-                    <Button color="inherit">Path Finding</Button>
+                    <Link to="/Pathfinding" className={classes.menuLinks}>
+                        <Button color="inherit">Path Finding</Button>
+                    </Link>
                 </Toolbar>
             </AppBar>
         </Box>
