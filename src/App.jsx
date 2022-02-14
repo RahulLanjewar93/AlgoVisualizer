@@ -85,7 +85,7 @@ function App() {
       case 'BINARYSEARCH':
         algoState = true
         setStepsArray(steps.binarysearch)
-        setIndex(await binarySearch(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed, index, setIndex, target))
+        setIndex(await binarySearch(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, 100, index, setIndex, target))
         break
       default:
         break
