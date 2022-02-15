@@ -41,7 +41,7 @@ const Sorting = () => {
             <Grid container direction="row" spacing={2} alignItems="center" justify="center">
                 <Grid item xs={12} lg={3}>
                     <span style={{ display: 'inline-flex' }}>
-                        <RefreshIcon onClick={() => { globalContext.setRandomArray([]); insertInArray() }} />
+                        <RefreshIcon onClick={() => { globalContext.algoState = false; globalContext.setRandomArray([]); insertInArray(); }} />
                     </span>
                     <Paper className={classes.paper} elevation={2}>
                         <Grid container direction="column" alignItems="center" justify="center">
