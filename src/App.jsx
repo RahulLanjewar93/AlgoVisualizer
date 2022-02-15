@@ -53,7 +53,10 @@ function App() {
       }
       return result
     })
-    setRandomArray(newArray)
+    newArray = newArray.map(number=>{
+      return +number
+    })
+    setRandomArray([...newArray])
   }
 
   const theme = createTheme({

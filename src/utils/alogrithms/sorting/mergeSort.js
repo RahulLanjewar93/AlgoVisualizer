@@ -21,7 +21,7 @@ const mergeSort =  async (randomArray,setRandomArray,sortedArray,setSortedArray,
   )
   console.log('result',result)
   await sleep(speed)
-
+  setCurrentElement(null)
   setSortedArray(result)
   return result
 }

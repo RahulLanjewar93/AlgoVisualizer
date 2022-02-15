@@ -25,6 +25,6 @@ const bubbleSort = async (randomArray,setRandomArray,setCurrentElement,setNextEl
   setCurrentElement(null)
   setNextElement(null)
   setCurrentStep([])
-  console.log('sorting done')
+  console.log('sorting done',newArray)
 }
 export default bubbleSort
