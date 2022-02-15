@@ -13,7 +13,7 @@ const mergeSort =  async (randomArray,setRandomArray,sortedArray,setSortedArray,
   let leftResult = await mergeSort(left,setRandomArray,sortedArray,setSortedArray,setCurrentElement,setNextElement,setCurrentStep,speed)
   let rightResult = await mergeSort(right,setRandomArray,sortedArray,setSortedArray,setCurrentElement,setNextElement,setCurrentStep,speed)
   await sleep(speed)
-  
+
   const result = merge(
     leftResult,
     rightResult,
@@ -21,7 +21,7 @@ const mergeSort =  async (randomArray,setRandomArray,sortedArray,setSortedArray,
   )
   console.log('result',result)
   await sleep(speed)
-  
+
   setSortedArray(result)
   return result
 }

@@ -25,7 +25,6 @@ function App() {
   const [currentStep, setCurrentStep] = useState([])
   const [target, setTarget] = useState(null)
   const [index, setIndex] = useState(null)
-  const [duplicateArray, setDuplicateArray] = useState([])
   useEffect(() => {
     insertInArray();
   }, [])
@@ -92,6 +91,7 @@ function App() {
         algoState = true
         setStepsArray(steps.bubblesort)
         await bubbleSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed)
+        algoState = false
         break
       case 'SELECTION':
         algoState = true

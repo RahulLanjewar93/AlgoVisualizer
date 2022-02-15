@@ -2,6 +2,7 @@ import sleep from '../../sleep'
 
 const bubbleSort = async (randomArray,setRandomArray,setCurrentElement,setNextElement,setCurrentStep,speed) => {
   const newArray = [...randomArray]
+  console.log('na',newArray)
   setCurrentStep([0,6])
   for (let i = 0; i < newArray.length; i++) {
     await sleep(speed)
