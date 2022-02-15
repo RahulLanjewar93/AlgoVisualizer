@@ -6,6 +6,7 @@ import { Typography, TextField, Grid, Button } from '@mui/material';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import Visualizer from './Visualizer';
 import Steps from './Steps';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 const primary = '#faf6f2'
 const secondary = '#232323'
@@ -106,8 +107,9 @@ export default function Searching() {
                     </ToggleButtonGroup>
                 </span>
                 <span style={{ display: 'inline-flex' }}>
-                    <Typography>Enter custom array (Separate each number with a comma): </Typography>
-                    <TextField id="outlined-basic" variant="outlined" className={classes.arrayInput} size="small" color="secondary" />
+                    {/* <Typography>Enter custom array (Separate each number with a comma): </Typography>
+                    <TextField id="outlined-basic" variant="outlined" className={classes.arrayInput} size="small" color="secondary" /> */}
+                    <RefreshIcon onClick={() => { globalContext.setRandomArray([]); insertInArray() }} />
                 </span>
             </div>
             <Grid container direction="column" justify="center" alignItems="center" sx={{ width: '100%' }}>
@@ -127,7 +129,7 @@ export default function Searching() {
                     </Typography>
                     <TextField defaultValue={globalContext.target} onChange={(e) => { handleNumberChange(e) }} id="outlined-basic" type="number" variant="outlined" size="small" sx={{ width: '4rem', ml: '1rem' }} />
                     <Button variant="contained" color="secondary" sx={{ ml: '1rem' }} onClick={(e) => { handleClick(e) }}>Start</Button>
-                    <Typography id="search-result" sx={{color: '#232323', textAlign: 'center', marginTop: '0.2rem', marginLeft: '1rem' }}></Typography>
+                    <Typography id="search-result" sx={{ color: '#232323', textAlign: 'center', marginTop: '0.2rem', marginLeft: '1rem' }}></Typography>
                 </Grid>
             </Grid>
         </div >

@@ -5,6 +5,7 @@ import { GlobalContext } from '../../App';
 import { Grid, Paper, Typography, Button } from '@mui/material';
 import Visualizer from './Visualizer';
 import Steps from './Steps';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,6 +40,9 @@ const Sorting = () => {
         <div className={classes.root}>
             <Grid container direction="row" spacing={2} alignItems="center" justify="center">
                 <Grid item xs={12} lg={3}>
+                    <span style={{ display: 'inline-flex' }}>
+                        <RefreshIcon onClick={() => { globalContext.setRandomArray([]); insertInArray() }} />
+                    </span>
                     <Paper className={classes.paper} elevation={2}>
                         <Grid container direction="column" alignItems="center" justify="center">
                             <Grid item xs={12} width="100%" padding="10px 0px">
