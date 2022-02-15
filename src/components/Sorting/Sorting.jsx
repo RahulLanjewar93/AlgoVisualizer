@@ -42,20 +42,26 @@ const Sorting = () => {
                     <Paper className={classes.paper} elevation={2}>
                         <Grid container direction="column" alignItems="center" justify="center">
                             <Grid item xs={12} width="100%" padding="10px 0px">
-                                <Button color="secondary" variant="contained" fullWidth onClick={() => { globalContext.dispatch({ type: 'BUBBLE' }) }}>
+                                <Button color="secondary" variant="contained" fullWidth onClick={() => { globalContext.dispatch({ type: 'BUBBLE' }) }} disabled={globalContext.algoState ? true : false}>
                                     <Typography variant='h6'>
                                         Bubble Sort
                                     </Typography>
                                 </Button>
                             </Grid>
                             <Grid item xs={12} width="100%" padding="10px 0px">
-                                <Button color="secondary" variant="contained" fullWidth onClick={() => { globalContext.dispatch({ type: 'SELECTION' }) }}>
+                                <Button color="secondary" variant="contained" fullWidth onClick={() => { globalContext.dispatch({ type: 'SELECTION' }) }} disabled={globalContext.algoState ? true : false}>
                                     <Typography variant='h6' >
                                         Selection Sort
                                     </Typography>
                                 </Button>
                             </Grid>
-
+                            <Grid item xs={12} width="100%" padding="10px 0px">
+                                <Button color="secondary" variant="contained" fullWidth onClick={() => { globalContext.dispatch({ type: 'MERGE' }) }} disabled={globalContext.algoState ? true : false}>
+                                    <Typography variant='h6' >
+                                        Merge Sort
+                                    </Typography>
+                                </Button>
+                            </Grid>
                         </Grid>
 
                     </Paper>

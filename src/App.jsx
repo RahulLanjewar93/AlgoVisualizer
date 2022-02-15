@@ -7,6 +7,7 @@ import Landing from './components/Landing/Landing'
 import Navbar from './components/Shared/Navbar'
 import bubbleSort from './utils//alogrithms/sorting/bubbleSort'
 import selectionSort from './utils//alogrithms/sorting/selectionSort'
+import mergeSort from './utils/alogrithms/sorting/mergeSort'
 import linearSearch from './utils//alogrithms/searching/linearSearch'
 import binarySearch from './utils//alogrithms/searching/binarySearch'
 import steps from './utils/steps'
@@ -17,13 +18,14 @@ export const GlobalContext = createContext()
 function App() {
 
   const [randomArray, setRandomArray] = useState([]);
+  const [sortedArray, setSortedArray] = useState([]);
   const [currentElement, setCurrentElement] = useState(0);
   const [nextElement, setNextElement] = useState(1);
   const [stepsArray, setStepsArray] = useState(["Please Select Algorithm"])
   const [currentStep, setCurrentStep] = useState([])
   const [target, setTarget] = useState(null)
   const [index, setIndex] = useState(null)
-
+  const [duplicateArray, setDuplicateArray] = useState([])
   useEffect(() => {
     insertInArray();
   }, [])
@@ -33,6 +35,25 @@ function App() {
     for (let i = 0; i < 20; i++) {
       newArray.push(Math.floor(Math.random() * 64));
     };
+    setRandomArray(newArray)
+  }
+
+  const changeArray = (e) => {
+    let newArray = e.target.value.split(',')
+    console.log(newArray, 'na')
+    newArray = newArray.filter(element => {
+      let result = null;
+      try {
+        result = Number(element)
+        console.log('inside try', result)
+      } catch (err) {
+        console.log('err', err)
+      }
+      if (isNaN(result)) {
+        return false
+      }
+      return result
+    })
     setRandomArray(newArray)
   }
 
@@ -77,6 +98,13 @@ function App() {
         setStepsArray(steps.selectionsort)
         await selectionSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed)
         break
+      case 'MERGE':
+        algoState = true
+        setStepsArray(steps.selectionsort)
+        let result = await mergeSort(randomArray, setRandomArray, sortedArray, setSortedArray, setCurrentElement, setNextElement, setCurrentStep, speed)
+        setRandomArray(result)
+        setSortedArray([])
+        break
       case 'LINEARSEARCH':
         algoState = true
         setStepsArray(steps.linearsearch)
@@ -97,6 +125,8 @@ function App() {
   const contexts = {
     randomArray,
     setRandomArray,
+    sortedArray,
+    setSortedArray,
     currentElement,
     setCurrentElement,
     nextElement,
@@ -110,8 +140,8 @@ function App() {
     target,
     setTarget,
     index,
-    setIndex
-
+    setIndex,
+    changeArray,
   }
 
   return (
