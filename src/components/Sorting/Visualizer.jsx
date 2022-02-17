@@ -9,8 +9,15 @@ const useStyles = makeStyles({
         textAlign: 'center',
         display: 'inline-box',
         margin: 1,
+    },
+    container: {
+        marginTop: '3rem',
     }
 })
+
+const Bar = styled.div`
+    background:${props => props.active ? '#ff5e00!important' : props.next ? '#e6712e!important' : '#ffbba6!important'};
+`
 
 const Visualizer = () => {
     const classes = useStyles();
@@ -71,8 +78,6 @@ const Visualizer = () => {
     )
 }
 
-const Bar = styled.div`
-    background:${props => props.active ? 'red!important' : props.next ? 'blue!important' : '#42cef5'};
-`
+
 
 export default Visualizer

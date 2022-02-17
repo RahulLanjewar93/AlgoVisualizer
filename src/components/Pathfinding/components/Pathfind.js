@@ -15,7 +15,7 @@ const NODE_END_ROW = rows-1
 const NODE_END_COL = cols-1
 
 function Pathfind() {
-    
+
     const [Grid, setGrid] = useState([]);
     const [AstarPath, setAstarPath] = useState([]);
     const [AstarVisitedNodes, setAstarVisitedNodes] = useState([])
@@ -98,14 +98,14 @@ function Pathfind() {
                 return(
                     <div key={rowIndex} className='rowWrapper'>
                         {row.map((col, colIndex)=>{
-                            const {isStart, isEnd, isWall} = col; 
+                            const {isStart, isEnd, isWall} = col;
                             return(
-                                <Node 
-                                key={colIndex} 
-                                isStart={isStart} 
-                                isEnd={isEnd} 
-                                row={rowIndex} 
-                                col={colIndex} 
+                                <Node
+                                key={colIndex}
+                                isStart={isStart}
+                                isEnd={isEnd}
+                                row={rowIndex}
+                                col={colIndex}
                                 isWall={isWall}
                                 />
                             )

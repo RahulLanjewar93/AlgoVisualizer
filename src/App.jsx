@@ -53,7 +53,10 @@ function App() {
       }
       return result
     })
-    setRandomArray(newArray)
+    newArray = newArray.map(number=>{
+      return +number
+    })
+    setRandomArray([...newArray])
   }
 
   const theme = createTheme({
@@ -87,18 +90,18 @@ function App() {
   const algoReducer = async (algoState, action) => {
     const speed = 100
     switch (action.type) {
-      case 'BUBBLE':
+      case 'BUBBLESORT':
         algoState = true
         setStepsArray(steps.bubblesort)
         await bubbleSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed)
         algoState = false
         break
-      case 'SELECTION':
+      case 'SELECTIONSORT':
         algoState = true
         setStepsArray(steps.selectionsort)
         await selectionSort(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed)
         break
-      case 'MERGE':
+      case 'MERGESORT':
         algoState = true
         setStepsArray(steps.selectionsort)
         let result = await mergeSort(randomArray, setRandomArray, sortedArray, setSortedArray, setCurrentElement, setNextElement, setCurrentStep, speed)
