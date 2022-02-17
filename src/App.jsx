@@ -53,7 +53,7 @@ function App() {
       }
       return result
     })
-    newArray = newArray.map(number=>{
+    newArray = newArray.map(number => {
       return +number
     })
     setRandomArray([...newArray])
@@ -103,7 +103,7 @@ function App() {
         break
       case 'MERGESORT':
         algoState = true
-        setStepsArray(steps.selectionsort)
+        setStepsArray(steps.mergesort)
         let result = await mergeSort(randomArray, setRandomArray, sortedArray, setSortedArray, setCurrentElement, setNextElement, setCurrentStep, speed)
         setRandomArray(result)
         setSortedArray([])
