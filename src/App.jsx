@@ -88,7 +88,7 @@ function App() {
   })
 
   const algoReducer = async (algoState, action) => {
-    const speed = 100
+    const speed = 10
     switch (action.type) {
       case 'BUBBLESORT':
         algoState = true
@@ -116,7 +116,7 @@ function App() {
       case 'BINARYSEARCH':
         algoState = true
         setStepsArray(steps.binarysearch)
-        setIndex(await binarySearch(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, 100, index, setIndex, target))
+        setIndex(await binarySearch(randomArray, setRandomArray, setCurrentElement, setNextElement, setCurrentStep, speed, index, setIndex, target))
         break
       default:
         break
