@@ -4,6 +4,7 @@ import Node from '../components/Node'
 import '../components/css/pathfind.css'
 import { Typography, Button } from '@mui/material';
 import MUIGrid from '@mui/material/Grid';
+import DFS from '../Algorithms/dfs';
 
 const cols = 25;
 const rows = 15;
@@ -16,8 +17,9 @@ const NODE_END_COL = cols-1
 function Pathfind() {
     
     const [Grid, setGrid] = useState([]);
-    const [Path, setPath] = useState([]);
-    const [VisitedNodes, setVisitedNodes] = useState([])
+    const [AstarPath, setAstarPath] = useState([]);
+    const [AstarVisitedNodes, setAstarVisitedNodes] = useState([])
+    const [DFSVisitedNodes, setDFSVisitedNodes] = useState([])
 
     useEffect(()=>{
         initializeGrid();
@@ -33,14 +35,16 @@ function Pathfind() {
         addNeighbours(grid)
         const startNode = grid[NODE_START_ROW][NODE_START_COL]
         const endNode = grid[NODE_END_ROW][NODE_END_COL]
-        let path = Astar(startNode, endNode)
-        if(path.error){
-            console.log(path)
+        let DFSpath = DFS(startNode, endNode)
+        setDFSVisitedNodes(DFSpath)
+        let AstarPath = Astar(startNode, endNode)
+        if(AstarPath.error){
+            console.log(AstarPath)
         }else{
             startNode.isWall = false;
             endNode.isWall = false;
-            setPath(path.path);
-            setVisitedNodes(path.visitedNodes)
+            setAstarPath(AstarPath.path);
+            setAstarVisitedNodes(AstarPath.visitedNodes)
         }
     }
 
@@ -121,19 +125,33 @@ function Pathfind() {
         }
     }
 
-    const visualizePath = () => {
-        for(let i=0; i<=VisitedNodes.length; i++){
-            if(i===VisitedNodes.length){
-                setTimeout(() => {
-                    visualizeShortestPath(Path)
-                }, 20*i);
-            }else{
-                setTimeout(() => {
-                    const node = VisitedNodes[i];
-                    document.getElementById(`node-${node.x}-${node.y}`).className = "node node-visited"
-                }, 20*i);
+    const visualizePath = (algorithm) => {
+        if(algorithm=="astar"){
+            for(let i=0; i<=AstarVisitedNodes.length; i++){
+                if(i===AstarVisitedNodes.length){
+                    setTimeout(() => {
+                        visualizeShortestPath(AstarPath)
+                    }, 20*i);
+                }else{
+                    setTimeout(() => {
+                        const node = AstarVisitedNodes[i];
+                            document.getElementById(`node-${node.x}-${node.y}`).className = "node node-visited"
+                    }, 20*i);
+                }
             }
+        }else if(algorithm=="dfs"){
+            for(let i=0; i<=DFSVisitedNodes.length; i++){
+                    setTimeout(() => {
+                        const node = DFSVisitedNodes[i];
+                        if(!node){
+                            return
+                        }else{
+                            document.getElementById(`node-${node.x}-${node.y}`).className = "node node-visited"
+                        }
+                    }, 20*i);
+                }
         }
+
     }
 
   return (
@@ -141,14 +159,14 @@ function Pathfind() {
       <h1>Pathfind Component</h1>
       <MUIGrid container direction="row" spacing={2} alignItems="center" justify="center">
         <MUIGrid item xs={12} lg={3}>
-            {/* <Button onClick={visualizePath} color="secondary" variant="contained" fullWidth >
+            <Button onClick={()=>visualizePath("astar")} color="secondary" variant="contained" fullWidth >
                 <Typography variant='h6' >
                     A* Algorithm
                 </Typography>
-            </Button> */}
-            <Button onClick={visualizePath} color="secondary" variant="contained" fullWidth >
+            </Button>
+            <Button onClick={()=>visualizePath("dfs")} color="secondary" variant="contained" fullWidth >
                 <Typography variant='h6' >
-                    A* Algorithm
+                    DFS
                 </Typography>
             </Button>
             {/* <Button onClick={visualizePath} color="secondary" variant="contained" fullWidth >
