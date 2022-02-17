@@ -141,11 +141,21 @@ function Pathfind() {
       <h1>Pathfind Component</h1>
       <MUIGrid container direction="row" spacing={2} alignItems="center" justify="center">
         <MUIGrid item xs={12} lg={3}>
+            {/* <Button onClick={visualizePath} color="secondary" variant="contained" fullWidth >
+                <Typography variant='h6' >
+                    A* Algorithm
+                </Typography>
+            </Button> */}
             <Button onClick={visualizePath} color="secondary" variant="contained" fullWidth >
                 <Typography variant='h6' >
                     A* Algorithm
                 </Typography>
             </Button>
+            {/* <Button onClick={visualizePath} color="secondary" variant="contained" fullWidth >
+                <Typography variant='h6' >
+                    A* Algorithm
+                </Typography>
+            </Button> */}
         </MUIGrid>
         <MUIGrid item lg={9}>
             {gridWithNode}
