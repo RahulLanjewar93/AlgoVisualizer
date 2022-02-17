@@ -14,7 +14,7 @@ const NODE_END_ROW = rows-1
 const NODE_END_COL = cols-1
 
 function Pathfind() {
-    
+
     const [Grid, setGrid] = useState([]);
     const [Path, setPath] = useState([]);
     const [VisitedNodes, setVisitedNodes] = useState([])
@@ -94,14 +94,14 @@ function Pathfind() {
                 return(
                     <div key={rowIndex} className='rowWrapper'>
                         {row.map((col, colIndex)=>{
-                            const {isStart, isEnd, isWall} = col; 
+                            const {isStart, isEnd, isWall} = col;
                             return(
-                                <Node 
-                                key={colIndex} 
-                                isStart={isStart} 
-                                isEnd={isEnd} 
-                                row={rowIndex} 
-                                col={colIndex} 
+                                <Node
+                                key={colIndex}
+                                isStart={isStart}
+                                isEnd={isEnd}
+                                row={rowIndex}
+                                col={colIndex}
                                 isWall={isWall}
                                 />
                             )
@@ -141,16 +141,6 @@ function Pathfind() {
       <h1>Pathfind Component</h1>
       <MUIGrid container direction="row" spacing={2} alignItems="center" justify="center">
         <MUIGrid item xs={12} lg={3}>
-            <Button onClick={visualizePath} color="secondary" variant="contained" fullWidth >
-                <Typography variant='h6' >
-                    A* Algorithm
-                </Typography>
-            </Button>
-            <Button onClick={visualizePath} color="secondary" variant="contained" fullWidth >
-                <Typography variant='h6' >
-                    A* Algorithm
-                </Typography>
-            </Button>
             <Button onClick={visualizePath} color="secondary" variant="contained" fullWidth >
                 <Typography variant='h6' >
                     A* Algorithm
